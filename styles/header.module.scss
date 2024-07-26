@@ -1,0 +1,125 @@
+.container {
+	position: relative;
+
+	.logo {
+		display: inline-block;
+		background: none;
+	
+		h1, span {
+			overflow: hidden;
+			border-right: .15em solid transparent;
+			white-space: nowrap;
+			transition: font-size 333ms ease;
+		}
+	
+		h1 {
+			animation: 
+				typing 3.5s steps(18, end) 1s 1 normal both,
+				cursor .75s step-end 4;
+			font-size: 5em;
+			font-weight: normal;
+			text-transform: lowercase;
+			color: var(--text-accent);
+	
+			&:before {
+				content: '<';
+			}
+			&:after {
+				content: '/>';
+			}
+		}
+	
+		span {
+			display: inline-block;
+			animation: 
+				typing 3.5s steps(28, end) 1s 1 normal both,
+				cursor .75s steps(28, end) infinite;
+			animation-delay: 4.5s;
+			letter-spacing: .15em;
+			font-size: 3em;
+			color: var(--foreground-color);
+		}
+	}
+
+	nav {
+		width: 100%;
+		// transition: right 333ms ease, top 333ms ease;
+
+		ul, li {
+			list-style: none;
+		}
+
+		ul {
+			height: 60px;
+			display: flex;
+			align-items: center;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			margin: 0 1em;
+
+			&:first-of-type {
+				margin-left: 0;
+			}
+			&.active a {
+				color: var(--foreground-color);
+				background-image: linear-gradient(transparent calc(100% - 2px), var(--foreground-color) 2px);
+				background-size: 100% 100%;
+			}
+		}
+	}
+
+	&.scrolled {
+		section {
+			position: fixed;
+			top: 0;
+			left: 0;
+			padding: 0 1em;
+			width: 100%;
+			box-shadow: 0 2px 4px rgba(#666,.24), 0 0 0 1px rgba(#666,.08);
+
+			div {
+				padding: 0;
+				position:relative;
+				z-index: 1;
+			}
+
+			&:before {
+				content: '';
+				background: rgba(var(--background-color), 0.7);
+				backdrop-filter: saturate(180%) blur(20px);
+				height: 100%;
+				position: absolute;
+				width: 100%;
+			}
+		}
+
+		.logo {
+			h1 {
+				font-size: 2em;
+			}
+			span {
+				font-size: 1.5em;
+			}
+		}
+
+		nav {
+			width: auto;
+			position: fixed;
+			right: 0;
+			top: 0;
+		}
+	}
+}
+
+@keyframes typing {
+	from { width: 0; }
+	to { width: 100%; }
+}
+
+@keyframes cursor {
+	from, to { border-color: transparent }
+	50% { border-color: var(--text-accent); }
+}

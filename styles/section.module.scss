@@ -1,0 +1,23 @@
+.container {
+	> div {
+		padding: 3em;
+		max-width: 940px;
+		box-sizing: border-box;
+
+		h2 {
+			font-weight: normal;
+			font-size: 3em;
+			text-transform: lowercase;
+			color: var(--text-accent);
+			width: 100%;
+			margin: 0 0 0.5em -0.4em;
+	
+			&:before {
+				content: '<';
+			}
+			&:after {
+				content: '/>';
+			}
+		}
+	}
+}
