@@ -21,3 +21,12 @@
 		}
 	}
 }
+
+// =============
+// media queries 
+// =============
+@media (max-width: 654px) {
+    .container > div h2 {
+        font-size: 2em;
+    }
+}
