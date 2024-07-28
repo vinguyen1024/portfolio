@@ -1,14 +1,11 @@
 /**
- * scrollIntoViewCallback
- * 
- * scrollIntoView currently doesn't have a callback functionality,
- * so we're creating an IntersectionObserver to detect if the element
+ * we're creating an IntersectionObserver to detect if the element
  * is fully visible
  * 
  * @param {*} element 
  * @param {*} callback
  */
-const scrollIntoViewCallback = (element, callback) => {
+const Observer = (element, callback) => {
 	const observe = (entries, observer) => {
 		entries.forEach(entry => {
 			if (entry.target === element && entry.intersectionRatio >= 0.90) {
@@ -18,7 +15,6 @@ const scrollIntoViewCallback = (element, callback) => {
 	
 				// Stop listening for intersection changes
 				observer.disconnect();
-	
 			}
 		});
 	}
@@ -32,4 +28,4 @@ const scrollIntoViewCallback = (element, callback) => {
 	observer.observe(element);
 }
 
-export default scrollIntoViewCallback;
+export default Observer;

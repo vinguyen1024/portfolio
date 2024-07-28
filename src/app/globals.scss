@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-color: #fff;
-        --background-color: #000;
+        --background-color: #121212;
         --text-accent: #FF4F98;
         --text-link: #D442FF;
         --text-link-accent: #e58fff;
@@ -82,6 +82,10 @@ strong {
 main {
     p + p {
         margin: 1em 0;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 }
 

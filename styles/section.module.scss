@@ -1,25 +1,51 @@
 .container {
-	> div {
-		padding: 3em;
-		max-width: 940px;
-		box-sizing: border-box;
+    &:not(:global(#header)) > div {
+        position: relative;
 
-		h2 {
-			font-weight: normal;
-			font-size: 3em;
-			text-transform: lowercase;
-			color: var(--text-accent);
-			width: 100%;
-			margin: 0 0 0.5em -0.4em;
-	
-			&:before {
-				content: '<';
-			}
-			&:after {
-				content: '/>';
-			}
-		}
-	}
+        &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            border: 4px dotted var(--text-accent);
+            width: 100%;
+            left: 0;
+            top: 80px;
+            bottom: 0;
+        }
+
+        h2 {
+            position: relative;
+            display: inline;
+            background-color: var(--background-color);
+            padding: 0 0.25em;
+        }
+
+        p {
+            position: relative;
+        }
+    }
+
+    > div {
+        padding: 3em;
+        max-width: 940px;
+        box-sizing: border-box;
+
+        h2 {
+            font-weight: normal;
+            font-size: 3em;
+            text-transform: lowercase;
+            color: var(--text-accent);
+            width: 100%;
+            margin: 0 0 0.5em -0.4em;
+    
+            &:before {
+                content: '<';
+            }
+            &:after {
+                content: '/>';
+            }
+        }
+    }
 }
 
 // =============

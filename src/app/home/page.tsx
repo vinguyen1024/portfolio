@@ -1,66 +1,12 @@
 "use client";
 import {useState, useEffect, useRef, useCallback} from 'react';
 import {useRouter} from 'next/navigation';
-import Header, {HeaderSection} from '@/_components/Header';
-import Section from '@/_components/Section';
-import debounce from '@/_utils/debounce';
-import scrollIntoViewCallback from '@/_utils/scrollIntoViewCallback';
+import {Header, Section} from '@/_components';
+import {debounce, observer} from '@/_utils';
 import {sections} from '@/data/sections';
 import styles from '/styles/home.module.scss';
 
-const useWindowSize = () => {
-    const [windowSize, setWindowSize] = useState({
-        width: undefined,
-        height: undefined,
-    });
-
-    useEffect(() => {
-        const handleWindowResize = () => {
-            setWindowSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-        window.addEventListener('resize', handleWindowResize);
-        // Call handler right away so state gets updated with initial window size
-        handleWindowResize();
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
-    return windowSize;
-};
-
 const Home = () => {
-    /**
-     * Attaching event listeners for sticky header
-     */
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [scrollDirection, setScrollDirection] = useState(false);
-    const windowSize = useWindowSize();
-
-    useEffect(() => {
-        let lastScrollTop = 0;
-        const onScroll = () => {
-            const {scrollTop} = document.body;
-            // detect which direction the page scrolled
-            setScrollDirection(lastScrollTop < scrollTop ? 'down' : 'up');
-            lastScrollTop = scrollTop;
-
-            // detect if the page scrolled past splash
-            setIsScrolled(scrollTop > windowSize.height/2);
-
-            // set the current view to null when scrolled to top
-            if (scrollTop < windowSize.height/2) {
-                setCurrentView(null);
-            }
-        };
-        window.addEventListener("scroll", onScroll, true);
-        onScroll();
-        return () => window.removeEventListener("scroll", onScroll, true);
-    }, [windowSize]);
-
     // useEffect(()=> {
     //     const hash = window.location.hash;
     //     setCurrentView(hash || '/');
@@ -68,13 +14,13 @@ const Home = () => {
     // });
 
     // const sectionRef = useRef([]);
-    // const router = useRouter();
+    const router = useRouter();
 
     // const scrollElementIntoView = (id, href) => {
     //     const element = sectionRef[id];
     //     element.scrollIntoView({behavior: "smooth"});
 
-    //     scrollIntoViewCallback(element, () => {
+    //     observer(element, () => {
     //         // callback to replace router and set active navigation
     //         // once element is scrolled into view
     //         router.replace(href);
@@ -94,6 +40,7 @@ const Home = () => {
             return;
         }
         // scrollElementIntoView(element, href);
+        sectionRef[element].scrollIntoView({behavior: "smooth"});
     };
 
     /**
@@ -107,9 +54,9 @@ const Home = () => {
         sections.map(({id}, i) => {
             observers[i] = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
-                    console.info(entry.target.id, entry.intersectionRatio, entry.isIntersecting);
                     if (entry.intersectionRatio > 0.1 && entry.isIntersecting) {
                         setCurrentView(entry.target.id);
+                        // router.replace(`#${entry.target.id}`);
                     }
                 });
             }, {
@@ -127,11 +74,8 @@ const Home = () => {
 
     return (
         <div className={styles.container}>
-            <Header scrolled={isScrolled} scrollDirection={scrollDirection}>
-                <Section id="header" flex={false}>
-                    <div><HeaderSection onClickHandler={onClickHandler} activeElement={currentView} /></div>
-                </Section>
-            </Header>
+            <Header onClickHandler={onClickHandler} activeElement={currentView} />
+
             <main className={styles.main}>
                 { sections.map(({id, content}, i) => (
                     <Section key={id} id={id} ref={el => sectionRef[id] = el}>
