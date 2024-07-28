@@ -71,25 +71,23 @@ const Header = ({children}) => {
 	return (
 		<header className={['flex', styles.container, isScrolled ? styles.scrolled : null, scrollDirection && 'down' === scrollDirection ? styles.down : null].join(' ')}>
 			<Section id="header" flex={false}>
-                <div>
-                	<Link href="/" className={styles.logo} onClick={onClickHandler} replace data-element="header" data-href="/">
-						<Heading />
-					</Link>
-					<nav>
-						<ul>
-							{navigation.map(({name, onClick, ...props}) => {
-								const element = name.toLocaleLowerCase();
-								// const isActive = activeElement == element;
-								const isActive = null;
-								return (
-									<li key={`navigation-${element}`} className={isActive ? styles.active : null}>
-										<Link {...props} onClick={onClick ? onClickHandler : null} data-element={element} data-href={props.href}>{name}</Link>
-									</li>
-								)
-							})}
-						</ul>
-					</nav>
-                </div>
+            	<Link href="/" className={styles.logo} onClick={onClickHandler} replace data-element="header" data-href="/">
+					<Heading />
+				</Link>
+				<nav>
+					<ul>
+						{navigation.map(({name, onClick, ...props}) => {
+							const element = name.toLocaleLowerCase();
+							// const isActive = activeElement == element;
+							const isActive = null;
+							return (
+								<li key={`navigation-${element}`} className={isActive ? styles.active : null}>
+									<Link {...props} onClick={onClick ? onClickHandler : null} data-element={element} data-href={props.href}>{name}</Link>
+								</li>
+							)
+						})}
+					</ul>
+				</nav>
             </Section>
 		</header>
 	);

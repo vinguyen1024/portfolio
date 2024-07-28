@@ -10,6 +10,7 @@
     --text-accent: #FD0381;
     --text-link: #BB0AFE;
     --text-link-accent: #e58fff;
+    --button-background-color: #800035;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +20,7 @@
         --text-accent: #FF4F98;
         --text-link: #D442FF;
         --text-link-accent: #e58fff;
+        --button-background-color: #800035;
     }
 }
 
