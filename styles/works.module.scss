@@ -1,0 +1,38 @@
+.container {
+    ul, li {
+        list-style: none;
+    }
+    
+    ul {
+        display: flex;
+        flex-flow: row wrap;
+    }
+
+    li {
+        box-sizing: border-box;
+        margin: 5px;
+        display: block;
+        width: calc(25% - 10px);
+        position: relative;
+        height: 125px;
+        overflow: hidden;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        border-radius: 4px;
+        cursor: pointer;
+
+        img {
+            object-fit: cover;
+            object-position: center;
+            height: 100%;
+            width: 100%;
+            transition: width 333ms ease, height 333ms ease;
+        }
+
+        &:hover img {
+            width: 125%;
+            height: 125%;
+        }
+    }
+}

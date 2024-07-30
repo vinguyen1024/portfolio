@@ -1,5 +1,5 @@
 import {Section} from '@/_components';
-import {experience} from '@/data/resume';
+import {experience} from '@/_data/resume';
 import styles from '/styles/experience.module.scss';
 
 const Experience = () => (

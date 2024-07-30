@@ -6,18 +6,22 @@
             content: '';
             display: block;
             position: absolute;
-            border: 4px dotted var(--text-accent);
+            border: 2px dashed var(--text-accent);
             width: 100%;
             left: 0;
-            top: 80px;
+            top: 0;
             bottom: 0;
+            border-radius: 20px;
+            box-sizing: border-box;
         }
 
         h2 {
-            position: relative;
+            position: absolute;
             display: inline;
             background-color: var(--background-color);
             padding: 0 0.25em;
+            width: auto;
+            top: -35px;
         }
 
         p {
@@ -27,7 +31,7 @@
 
     > div {
         padding: 3em;
-        max-width: 940px;
+        max-width: 900px;
         box-sizing: border-box;
 
         h2 {

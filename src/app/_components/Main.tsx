@@ -1,4 +1,4 @@
-import {About, Experience, Projects} from '@/_components';
+import {About, Experience, Works} from '@/_components';
 
 const Main = () => (
     <main>
@@ -9,7 +9,7 @@ const Main = () => (
         ))*/ }
         <About />
         <Experience />
-        <Projects />
+        <Works />
     </main>
 );
 
