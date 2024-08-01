@@ -20,22 +20,4 @@
     p {
         margin-top: 0.5rem;
     }
-
-    ul, li {
-        list-style: none;
-    }
-
-    ul {
-        margin-top: 0.5rem;
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    li {
-        font-size: 0.85rem;
-        background-color: var(--button-background-color);
-        padding: 0.25rem 0.5rem;
-        border-radius: 10px;
-        margin: 0.5rem 0.375rem 0 0;
-    }
 }

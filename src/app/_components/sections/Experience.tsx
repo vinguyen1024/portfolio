@@ -1,4 +1,4 @@
-import {Section} from '@/_components';
+import {Chip, Section} from '@/_components';
 import {experience} from '@/_data/resume';
 import styles from '/styles/experience.module.scss';
 
@@ -15,9 +15,7 @@ const Experience = () => (
 						<span className={styles.position} key={`experience-${i}_position-${j}`}>{title}</span>
 					))}
 					<p>{content}</p>
-					<ul>
-						{technologies.map((item, j) => <li key={`experience-${i}_tech-${j}`}>{item}</li>)}
-					</ul>
+					<Chip items={technologies} name={`experience-${i}_tech`} />
 				</div>
 			);
 		})}
