@@ -1,7 +1,7 @@
 "use client";
 import {useState, useEffect, useRef, useCallback} from 'react';
 import {useRouter} from 'next/navigation';
-import {Header, Main, Section} from '@/_components';
+import {Header, Main} from '@/_components';
 import {debounce, observer} from '@/_utils';
 import styles from '/styles/home.module.scss';
 
@@ -12,9 +12,7 @@ const Home = () => {
     //     setActiveElement(hash.replace(/.*\#/, '')||'header');
     // });
 
-    // const sectionRef = useRef([]);
-    const router = useRouter();
-
+    // const router = useRouter();
     // const scrollElementIntoView = (id, href) => {
     //     const element = sectionRef[id];
     //     element.scrollIntoView({behavior: "smooth"});
@@ -30,6 +28,12 @@ const Home = () => {
     // }
 
     /**
+     * Intersection Observer to detect which section is currently showing
+     */
+    const sectionRef = useRef([]);
+    const [currentView, setCurrentView] = useState(null);
+
+    /**
      * OnClick event handling for the navigation
      */
     const onClickHandler = (e) => {
@@ -41,12 +45,6 @@ const Home = () => {
         // scrollElementIntoView(element, href);
         sectionRef[element].scrollIntoView({behavior: "smooth"});
     };
-
-    /**
-     * Intersection Observer to detect which section is currently showing
-     */
-    const sectionRef = useRef([]);
-    const [currentView, setCurrentView] = useState(null);
 
     // let observers = [];
     // useEffect(() => {
