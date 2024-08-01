@@ -1,0 +1,11 @@
+export { default as IconArrowRight } from './ArrowRight';
+export { default as IconChevronLeft } from './ChevronLeft';
+export { default as IconChevronRight } from './ChevronRight';
+export { default as IconClose } from './Close';
+export { default as IconDownload } from './Download';
+export { default as IconEmail } from './Email';
+export { default as IconLinkedIn } from './LinkedIn';
+export { default as IconLocation } from './Location';
+export { default as IconOpenNew } from './OpenNew';
+export { default as IconPhone } from './Phone';
+export { default as IconWebsite } from './Website';
