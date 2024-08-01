@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        position: absolute;
+    }
+
+    .arrows {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(#121212, 0.8);
+        border-radius: 30px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+
+        svg {
+            fill: #fff;
+        }
+    }
+
+    .prev {
+        left: 10px;
+    }
+
+    .next {
+        right: 10px;
+    }
+}

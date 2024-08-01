@@ -1,7 +1,9 @@
+export { default as Carousel } from './Carousel';
 export { default as Chip } from './Chip';
 export { default as Header } from './Header';
 export { default as Heading } from './Heading';
 export { default as Main } from './Main';
+export { default as Modal } from './Modal';
 export { default as ScrollLink } from './ScrollLink';
 export { default as Section } from './Section';
 export { default as About } from './sections/About';
