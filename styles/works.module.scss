@@ -1,26 +1,26 @@
 .container {
+    position: relative;
+
     ul, li {
         list-style: none;
     }
     
-    ul {
+    > ul {
         display: flex;
         flex-flow: row wrap;
     }
 
-    li {
+    > ul li {
         box-sizing: border-box;
         margin: 5px;
-        display: block;
-        width: calc(25% - 10px);
-        position: relative;
-        height: 125px;
+        cursor: pointer;
+        width: calc(33.33% - 10px);
+        height: 150px;
         overflow: hidden;
         align-items: center;
         display: flex;
         justify-content: center;
         border-radius: 4px;
-        cursor: pointer;
 
         img {
             object-fit: cover;
@@ -34,5 +34,9 @@
             width: 125%;
             height: 125%;
         }
+    }
+
+    :global(.inner) {
+        max-width: 640px;
     }
 }

@@ -1,38 +1,37 @@
 import {useState} from 'react';
 import Image from 'next/image';
-import {Section} from '@/_components';
+import {motion} from "framer-motion";
+import {Section, WorkModal} from '@/_components';
 import {works} from '@/_data/works';
 import styles from '/styles/works.module.scss';
 
 const Works = () => {
-    const [show, setShow] = useState(0);
+    const [selectedItem, setSelectedItem] = useState(false);
 
-    const handleClose = () => setShow(0);
-    const handleShow = (item) => setShow(item);
+    const handleClose = () => setSelectedItem(false);
+    const handleShow = (item) => setSelectedItem(item);
 
     return (
         <Section id="projects">
             <h2>Works</h2>
             <div className={styles.container}>
                 <ul>
-                    {works.map((props, i) => {
-                        // starting the index from 1 to use as reference for modal
-                        i = i + 1;
-
-                        const showModal = Boolean(show) && show === i;
+                    {works.map((work, i) => {
                         return (
-                            <li key={`works-${i}`} onClick={(e) => {handleShow(i)}}>
+                            <motion.li key={`works-${i}`} layoutId={`works-${i}`} 
+                                    onClick={(e) => selectedItem === false && handleShow(i)}>
                                 <Image
                                     // fill
-                                    src={`/images/projects/${props.image}`}
-                                    alt={props.title}
+                                    src={work.images[0]}
+                                    alt={work.title}
                                     width={640}
                                     height={360}
                                   />
-                            </li>
+                            </motion.li>
                         );
                     })}
                 </ul>
+                {selectedItem !== false && <WorkModal layoutId={`works-${selectedItem}`} {...works[selectedItem]} handleClose={handleClose} />}
             </div>
         </Section>
     );

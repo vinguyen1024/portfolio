@@ -1,0 +1,36 @@
+.container {
+    h3 {
+        font-weight: normal;
+        font-size: 1.5em;
+        text-transform: lowercase;
+        color: var(--text-accent);
+    }
+
+    .content {
+        padding: 20px;
+
+        p {
+            margin: 1em 0;
+        }
+    }
+
+    .urls {
+        margin: 1em 0;
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--text-link);
+        }
+    }
+}

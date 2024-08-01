@@ -4,6 +4,7 @@ export { default as Header } from './Header';
 export { default as Heading } from './Heading';
 export { default as Main } from './Main';
 export { default as Modal } from './Modal';
+export { default as WorkModal } from './WorkModal';
 export { default as ScrollLink } from './ScrollLink';
 export { default as Section } from './Section';
 export { default as About } from './sections/About';
