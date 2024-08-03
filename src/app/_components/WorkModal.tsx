@@ -1,11 +1,24 @@
 import {Chip, Carousel, Modal} from '@/_components';
+import Image from 'next/image';
 import {IconOpenNew} from '@/_components/icons';
 import styles from '/styles/workmodal.module.scss';
 
 const WorkModal = (({title, images, content, links, technologies, layoutId, handleClose}) => {
     return (
         <Modal layoutId={layoutId} show={true} handleClose={handleClose}>
-            <Carousel images={images} width={640} height={360} />
+            <Carousel height={360}>
+            {
+                images.map((props, i) => (
+                    <Image
+                        {...props}
+                        draggable="false"
+                        key={`work-${layoutId}_image-${i}`}
+                        width={640}
+                        height={360}
+                      />
+                ))
+            }
+            </Carousel>
             <div className={styles.container}>
                 <div className={styles.content}>
                     <h3>{title}</h3>

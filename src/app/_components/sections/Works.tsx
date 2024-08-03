@@ -21,9 +21,8 @@ const Works = () => {
                             <motion.li key={`works-${i}`} layoutId={`works-${i}`} 
                                     onClick={(e) => selectedItem === false && handleShow(i)}>
                                 <Image
-                                    // fill
-                                    src={work.images[0]}
-                                    alt={work.title}
+                                    src={work.images[0].src}
+                                    alt={work.images[0].alt}
                                     width={640}
                                     height={360}
                                   />
