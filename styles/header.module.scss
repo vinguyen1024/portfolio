@@ -159,7 +159,7 @@
         }
     }
 }
-@media (min-width: 655px) {
+@media (min-width: 661px) {
     .container.scrolled {
         section > div {
             display: flex;
@@ -169,7 +169,7 @@
         }
     }
 }
-@media (max-width: 654px) {
+@media (max-width: 660px) {
     .container.scrolled {
         &.down nav {
             max-height: 0;

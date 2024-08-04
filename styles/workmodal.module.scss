@@ -1,18 +1,41 @@
+@mixin scrollbar {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -ms-scroll-chaining: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background: #99999933;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 56px;
+        background: #99999966;
+    }
+}
+
 .container {
     h3 {
         font-weight: normal;
         font-size: 1.5em;
         text-transform: lowercase;
         color: var(--text-accent);
+        margin: 12px 20px;
     }
 
     .content {
-        padding: 20px;
-        max-height: calc(50vh - 100px);
-        overflow: auto;
+        padding: 0 20px 20px;
+        max-height: calc(50vh - 150px);
+        @include scrollbar;
 
         p {
             margin: 1em 0;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
         }
     }
 
@@ -34,5 +57,36 @@
             height: 14px;
             fill: var(--text-link);
         }
+    }
+}
+
+@media (max-width: 660px) {
+    .container { 
+        position: absolute;
+        top: 360px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        @include scrollbar;
+
+        h3 {
+            // position: fixed;
+            // top: 0;
+            // background-color: rgb(0 0 0 / 80%);
+            // padding: 0 10px;
+            // border-radius: 5px;
+            // margin-right: 50px;
+        }
+
+        .content {
+            max-height: none;
+            overflow-y: initial;
+        }
+    }
+}
+@media (max-width: 660px) and (max-height: 760px) {
+    .container { 
+        top: 48vh;
     }
 }

@@ -59,3 +59,11 @@
         margin: 14px 70px 8px 20px;
     }
 }
+
+@media (max-width: 660px) {
+    .container { 
+        .inner {
+            height: 100%;
+        }
+    }
+}

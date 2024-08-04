@@ -20,8 +20,8 @@ const WorkModal = (({title, images, content, links, technologies, layoutId, hand
             }
             </Carousel>
             <div className={styles.container}>
+                <h3>{title}</h3>
                 <div className={styles.content}>
-                    <h3>{title}</h3>
                     <p>{content}</p>
                     <ul className={styles.urls}>
                         {links && links.map(({text, url}, i) => 

@@ -40,3 +40,61 @@
         max-width: 640px;
     }
 }
+
+
+// =============
+// media queries 
+// =============
+
+@media (max-height: 760px) {
+    .container { 
+        :global(.carousel > div) {
+            &, img {
+                max-height: 48vh!important;
+            }
+
+            img {
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .container { 
+        > ul li {
+            width: calc(50% - 10px);
+        }
+
+        :global(.carousel > div) {
+            img {
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .container { 
+        > ul li {
+            width: 100%;
+            height: 200px;
+
+            margin: 10px 0;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

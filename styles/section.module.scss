@@ -2,6 +2,10 @@
     &:not(:global(#header)) > div {
         position: relative;
 
+        &:last-of-type {
+            margin-bottom: 3em;
+        }
+
         &:before {
             content: '';
             display: block;
@@ -33,6 +37,7 @@
         padding: 3em;
         max-width: 900px;
         box-sizing: border-box;
+        margin: 8em 20px;
 
         h2 {
             font-weight: normal;
@@ -55,8 +60,13 @@
 // =============
 // media queries 
 // =============
-@media (max-width: 654px) {
-    .container > div h2 {
-        font-size: 2em;
+@media (max-width: 660px) {
+    .container:not(:global(#header)) > div {
+        padding: 1.5em;
+
+        h2 {
+            font-size: 2em;
+            top: -23px;
+        }
     }
 }

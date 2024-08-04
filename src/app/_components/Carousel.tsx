@@ -55,7 +55,7 @@ const Carousel = (({children, height, loop = true}) => {
     }, [index]);
 
     return (
-        <div ref={containerRef} className={styles.container}>
+        <div ref={containerRef} className={`carousel ${styles.container}`}>
             {slides.map((slide, i) => {
                 const slideStyles = {
                     x,
