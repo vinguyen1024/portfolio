@@ -6,7 +6,7 @@ import styles from '/styles/workmodal.module.scss';
 const WorkModal = (({title, images, content, links, technologies, layoutId, handleClose}) => {
     return (
         <Modal layoutId={layoutId} show={true} handleClose={handleClose}>
-            <Carousel height={360}>
+            <Carousel>
             {
                 images.map((props, i) => (
                     <Image
