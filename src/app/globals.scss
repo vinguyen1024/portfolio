@@ -5,23 +5,14 @@
         'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
         'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-    --foreground-color: #000;
+    --foreground-color: #fff;
     --background-color: #fff;
-    --text-accent: #FD0381;
-    --text-link: #BB0AFE;
-    --text-link-accent: #e58fff;
-    --button-background-color: #800035;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-color: #fff;
-        --background-color: #121212;
-        --text-accent: #FF4F98;
-        --text-link: #D442FF;
-        --text-link-accent: #e58fff;
-        --button-background-color: #800035;
-    }
+    --background-color-dark: #121212;
+    --text-accent: #ff0099;
+    --text-deemphasized: #777;
+    --text-link: #8500ff;
+    --text-link-accent: #b15cff;
+    --button-background-color: #0070e3;
 }
 
 * {
@@ -54,6 +45,15 @@ a {
 
     &:hover {
         background-size: 100% 100%;
+    }
+}
+
+body.dark {
+    background-color: var(--background-color-dark);
+
+    a {
+        color: var(--text-link-accent);
+        background-image: linear-gradient(transparent calc(100% - 2px), var(--text-link) 2px);
     }
 }
 

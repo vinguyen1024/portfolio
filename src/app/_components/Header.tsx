@@ -1,6 +1,7 @@
 import {useRef, useEffect, useState} from 'react';
 import Link from 'next/link';
 import {Heading, Section} from '@/_components/';
+import {IconDark, IconLight} from '@/_components/icons';
 import {useWindowSize} from '@/_hooks';
 import {contact} from '@/_data/resume';
 import styles from '/styles/header.module.scss';
@@ -36,7 +37,7 @@ const navigation = [
     },
 ];
 
-const Header = ({children}) => {
+const Header = ({onIconClick, theme, children}) => {
 
     /**
      * Attaching event listeners for sticky header
@@ -86,6 +87,11 @@ const Header = ({children}) => {
                                 </li>
                             )
                         })}
+                        <li>
+                            <span className={styles.theme} onClick={onIconClick} title={`Enable ${theme === 'light'? 'dark' : 'light'} mode`}>
+                                {theme === 'light' ? <IconDark /> :<IconLight />}
+                            </span>
+                        </li>
                     </ul>
                 </nav>
             </Section>

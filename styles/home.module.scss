@@ -1,4 +1,46 @@
 .container {
-	position: relative;
-	width: 100%;
+    position: relative;
+    width: 100%;
+
+    .background {
+        position:fixed;
+        background-color:hsla(303,100%,82%,1);
+        background-image:
+            radial-gradient(at 65% 91%, hsla(266,100%,73%,1) 0px, transparent 50%),
+            radial-gradient(at 73% 15%, hsla(195,92%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 30% 47%, hsla(248,100%,75%,1) 0px, transparent 50%),
+            radial-gradient(at 66% 60%, hsla(316,100%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 79% 48%, hsla(199,98%,64%,1) 0px, transparent 50%),
+            radial-gradient(at 93% 95%, hsla(243,63%,74%,1) 0px, transparent 50%),
+            radial-gradient(at 29% 68%, hsla(237,100%,75%,1) 0px, transparent 50%);
+        background-size: 150% 150%;
+        filter: blur(80px);
+        animation: moveBackground 10s linear infinite;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: scale(1.1);
+
+        :global(.dark) & {
+            background-color: none;
+            background-image: none;
+            display: none;
+            animation: none;
+        }
+    }
+}
+@keyframes moveBackground {
+    0% { background-size: 100% 100%; }
+    10% { background-size: 120% 80%; }
+    20% { background-size: 190% 140%; }
+    30% { background-size: 130% 110%; }
+    40% { background-size: 150% 120%; }
+    50% { background-size: 180% 100%; }
+    60% { background-size: 220% 80%; }
+    70% { background-size: 100% 50%; }
+    80% { background-size: 120% 70%; }
+    90% { background-size: 110% 90%; }
+    100% { background-size: 100% 100%; }
 }

@@ -69,9 +69,22 @@ const Home = () => {
     //     });
     // }, [sectionRef, observers]);
 
+
+    const [theme, setTheme] = useState('light');
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    const onIconClick = () => {
+        if (newTheme === 'light') {
+            document.body.classList.remove('dark');
+        } else {
+            document.body.classList.add('dark');
+        }
+        setTheme(newTheme);
+    };
+
     return (
         <div className={styles.container}>
-            <Header onClickHandler={onClickHandler} activeElement={currentView} />
+            {theme === 'light' && <div className={styles.background} />}
+                <Header {...{onClickHandler, onIconClick, theme}} activeElement={currentView} />
             <Main />
             <footer />
         </div>

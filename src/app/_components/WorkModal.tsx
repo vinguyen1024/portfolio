@@ -3,7 +3,7 @@ import Image from 'next/image';
 import {IconOpenNew} from '@/_components/icons';
 import styles from '/styles/workmodal.module.scss';
 
-const WorkModal = (({title, images, content, links, technologies, layoutId, handleClose}) => {
+const WorkModal = (({title, images, content, links, date, technologies, layoutId, handleClose}) => {
     return (
         <Modal layoutId={layoutId} show={true} handleClose={handleClose}>
             <Carousel>
@@ -22,6 +22,7 @@ const WorkModal = (({title, images, content, links, technologies, layoutId, hand
             <div className={styles.container}>
                 <h3>{title}</h3>
                 <div className={styles.content}>
+                    <p className={styles.date}>{date}</p>
                     <p>{content}</p>
                     <ul className={styles.urls}>
                         {links && links.map(({text, url}, i) => 

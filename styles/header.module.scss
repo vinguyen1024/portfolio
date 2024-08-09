@@ -100,6 +100,19 @@
                 background-size: 100% 100%;
             }
         }
+
+        .theme {
+            display: flex;
+            cursor: pointer;
+
+            svg {
+                fill: var(--text-link);
+
+                :global(.dark) & {
+                    fill: var(--text-link-accent);
+                }
+            }
+        }
     }
 
     &.scrolled {
@@ -107,14 +120,13 @@
             position: fixed;
             top: 0;
             left: 0;
-            padding: 0 1em;
             width: 100%;
             box-shadow: 0 2px 4px rgba(#666,.24), 0 0 0 1px rgba(#666,.08);
             transition: height 333ms ease;
 
             > div {
                 z-index: 1;
-                padding: 0;
+                padding: 0 1em;
                 position:relative;
                 max-width: none;
             }
