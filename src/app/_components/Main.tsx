@@ -1,6 +1,6 @@
 import {About, Experience, Section, Works} from '@/_components';
 
-const Main = () => {
+const Main = ({getActiveElement}) => {
 
     const sections = {
         about: <About />,
@@ -11,7 +11,7 @@ const Main = () => {
     return (
         <main>
             {Object.keys(sections).map((id) => (
-                <Section key={id} id={id}>
+                <Section key={id} id={id} getActiveElement={getActiveElement}>
                     {sections[id]}
                 </Section>
             ))}

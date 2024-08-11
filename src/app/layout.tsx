@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins, VT323 } from 'next/font/google';
+import { metaData } from '@/_data/resume';
 import './globals.scss';
 
 const poppins = Poppins({ 
@@ -14,10 +15,7 @@ const vt323 = VT323({
   variable: '--vt323-font',
 });
 
-export const metadata: Metadata = {
-  title: 'Vi Nguyen — Front-end Software Developer',
-  description: 'A passion to building web applications for seamless user experience',
-};
+export const metadata: Metadata = metaData;
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
   return (
