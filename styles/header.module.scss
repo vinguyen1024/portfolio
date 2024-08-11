@@ -8,6 +8,8 @@
         > div {
             width: 100%;
             margin: 0 auto;
+            padding: 3em;
+            max-width: 900px;
         }
     }
 
@@ -198,12 +200,20 @@
     }
 }
 @media (max-width: 485px) {
-    .container:not(.scrolled) nav {
-        font-size: 3.3vw;
-    }
+    .container {
+        &:not(.scrolled) nav {
+            font-size: 3.3vw;
+        }
 
-    .container.scrolled nav{
-        font-size: 1em;
+        &.scrolled nav{
+            font-size: 1em;
+        }
+        
+        li:last-of-type {
+            position: absolute;
+            top: 20px;
+            right: 0;
+        }
     }
 }
 
