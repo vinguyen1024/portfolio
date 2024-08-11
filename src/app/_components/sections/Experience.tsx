@@ -1,9 +1,9 @@
-import {Chip, ExternalLink, Section} from '@/_components';
+import {Chip, ExternalLink} from '@/_components';
 import {experience} from '@/_data/resume';
 import styles from '/styles/experience.module.scss';
 
 const Experience = () => (
-    <Section id="experience">
+    <>
         <h2>Experience</h2>
         <div className={styles.container}>
             {experience.map(({company, position, summary, technologies}, i) => {
@@ -22,7 +22,7 @@ const Experience = () => (
             })}
             <p className={styles.resume}><ExternalLink url="#" text="View full resume"/></p>
         </div>
-    </Section>
+    </>
 );
 
 export default Experience;

@@ -12,7 +12,7 @@ const Works = () => {
     const handleShow = (item) => setSelectedItem(item);
 
     return (
-        <Section id="projects">
+        <>
             <h2>Works</h2>
             <div className={styles.container}>
                 <ul>
@@ -32,7 +32,7 @@ const Works = () => {
                 </ul>
                 {selectedItem !== false && <WorkModal layoutId={`works-${selectedItem}`} {...works[selectedItem]} handleClose={handleClose} />}
             </div>
-        </Section>
+        </>
     );
 };
 
