@@ -1,5 +1,6 @@
 export { default as Carousel } from './Carousel';
 export { default as Chip } from './Chip';
+export { default as ExternalLink } from './ExternalLink';
 export { default as Header } from './Header';
 export { default as Heading } from './Heading';
 export { default as Main } from './Main';

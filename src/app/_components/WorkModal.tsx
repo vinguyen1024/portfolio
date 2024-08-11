@@ -1,6 +1,5 @@
-import {Chip, Carousel, Modal} from '@/_components';
+import {Chip, Carousel, ExternalLink, Modal} from '@/_components';
 import Image from 'next/image';
-import {IconOpenNew} from '@/_components/icons';
 import styles from '/styles/workmodal.module.scss';
 
 const WorkModal = (({title, images, content, links, date, technologies, layoutId, handleClose}) => {
@@ -27,7 +26,7 @@ const WorkModal = (({title, images, content, links, date, technologies, layoutId
                     <ul className={styles.urls}>
                         {links && links.map(({text, url}, i) => 
                             <li key={`work-${layoutId}_link-${i}`}>
-                                <a href={url} rel="noopener noreferrer">{text} <IconOpenNew/></a>
+                                <ExternalLink {...{url, text}} rel={true} />
                             </li>
                         )}
                     </ul>

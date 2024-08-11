@@ -51,16 +51,11 @@
         justify-content: space-between;
 
         a {
-            display: flex;
-            align-items: center;
-            gap: 2px;
             background-image: linear-gradient(transparent calc(100% - 2px), var(--text-link) 2px);
             color: var(--text-link-accent);
         }
 
         svg {
-            width: 14px;
-            height: 14px;
             fill: var(--text-link-accent);
         }
     }

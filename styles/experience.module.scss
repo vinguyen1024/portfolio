@@ -1,12 +1,14 @@
 .container {
-    position: relative;
+    > div {
+        position: relative;
+
+        & + div {
+            margin-top: 2.5rem;
+        }
+    }
 
     h3 {
         font-weight: 500;
-    }
-
-    & + div {
-        margin-top: 2.5rem;
     }
 
     .position {
@@ -19,5 +21,9 @@
 
     p {
         margin-top: 0.5rem;
+    }
+
+    .resume {
+        margin-top: 2em;
     }
 }
