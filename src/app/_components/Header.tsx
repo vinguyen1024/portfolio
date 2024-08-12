@@ -82,7 +82,7 @@ const Header = ({
         const {element, href} = e.currentTarget.dataset;
 
         // no need to trigger scrollIntoView if we're already there
-        if (href == (window.location.hash || '/')) {
+        if (href == window.location.hash) {
             return;
         }
         
@@ -91,7 +91,7 @@ const Header = ({
 
 
     return (
-        <header className={['flex', styles.container, isScrolled ? styles.scrolled : null, scrollDirection && 'down' === scrollDirection ? styles.down : null].join(' ')}>
+        <header id="header" className={['flex', styles.container, isScrolled ? styles.scrolled : null, scrollDirection && 'down' === scrollDirection ? styles.down : null].join(' ')}>
             <section id="header">
                 <div>
                     <Link href="/" className={styles.logo} onClick={onClickHandler} replace data-element="header" data-href="/">
