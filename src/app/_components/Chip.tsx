@@ -1,4 +1,4 @@
-import styles from '/styles/chip.module.scss';
+import styles from '@/_styles/chip.module.scss';
 
 const Chip = ({items, name}) => (
     <ul className={styles.container}>

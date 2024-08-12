@@ -1,7 +1,7 @@
 import {useRef, useEffect} from 'react';
 import {useWindowSize} from '@/_hooks';
 import {debounce} from '@/_utils';
-import styles from '/styles/section.module.scss';
+import styles from '@/_styles/section.module.scss';
 
 const Section = ({id, getActiveElement, children}) => {
     const ref = useRef();

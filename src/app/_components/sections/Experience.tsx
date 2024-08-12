@@ -1,6 +1,6 @@
 import {Chip, ExternalLink} from '@/_components';
 import {experience} from '@/_data/resume';
-import styles from '/styles/experience.module.scss';
+import styles from '@/_styles/experience.module.scss';
 
 const Experience = () => (
     <>

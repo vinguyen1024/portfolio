@@ -1,6 +1,6 @@
 import {Chip, Carousel, ExternalLink, Modal} from '@/_components';
 import Image from 'next/image';
-import styles from '/styles/workmodal.module.scss';
+import styles from '@/_styles/work-modal.module.scss';
 
 const WorkModal = (({title, images, content, links, date, technologies, layoutId, handleClose}) => {
     return (

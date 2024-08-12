@@ -5,7 +5,7 @@ import {IconDark, IconLight} from '@/_components/icons';
 import {useWindowSize} from '@/_hooks';
 import {debounce} from '@/_utils';
 import {contact, metaData} from '@/_data/resume';
-import styles from '/styles/header.module.scss';
+import styles from '@/_styles/header.module.scss';
 
 const navigation = [
     {

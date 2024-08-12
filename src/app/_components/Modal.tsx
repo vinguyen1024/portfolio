@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {IconClose} from '@/_components/icons';
 import {motion, AnimatePresence} from "framer-motion";
-import styles from '/styles/modal.module.scss';
+import styles from '@/_styles/modal.module.scss';
 
 const Modal = ({show, title, handleClose, layoutId, children}) => {
     const handleKeyPress = (e) => {

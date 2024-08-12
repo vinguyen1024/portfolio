@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Header, Main } from '@/_components';
 import { metaData } from '@/_data/resume';
-import styles from '/styles/home.module.scss';
+import styles from '@/_styles/home.module.scss';
 
 const Home = () => {
     /**

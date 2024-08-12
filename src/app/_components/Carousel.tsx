@@ -1,7 +1,7 @@
 import {Children} from 'react';
 import {Splide, SplideTrack, SplideSlide} from '@splidejs/react-splide';
 import {IconChevronLeft, IconChevronRight} from '@/_components/icons';
-import styles from '/styles/carousel.module.scss';
+import styles from '@/_styles/carousel.module.scss';
 import '@splidejs/react-splide/css/core';
 
 

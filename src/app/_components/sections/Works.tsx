@@ -2,8 +2,8 @@ import {useState} from 'react';
 import Image from 'next/image';
 import {motion} from "framer-motion";
 import {Section, WorkModal} from '@/_components';
+import styles from '@/_styles/works.module.scss';
 import {works} from '@/_data/works';
-import styles from '/styles/works.module.scss';
 
 const Works = () => {
     const [selectedItem, setSelectedItem] = useState(false);
