@@ -2,6 +2,7 @@ import {useState} from 'react';
 import Image from 'next/image';
 import {motion} from "framer-motion";
 import {Section, WorkModal} from '@/_components';
+import {IconOpenFull} from '@/_components/icons';
 import styles from '@/_styles/works.module.scss';
 import {works} from '@/_data/works';
 
@@ -20,12 +21,15 @@ const Works = () => {
                         return (
                             <motion.li key={`works-${i}`} layoutId={`works-${i}`} 
                                     onClick={(e) => selectedItem === false && handleShow(i)}>
-                                <Image
-                                    src={work.images[0].src}
-                                    alt={work.images[0].alt}
-                                    width={640}
-                                    height={360}
-                                  />
+                                <span>
+                                    <Image
+                                        src={work.images[0].src}
+                                        alt={work.images[0].alt}
+                                        width={640}
+                                        height={360}
+                                      />
+                                      <IconOpenFull />
+                                </span>
                             </motion.li>
                         );
                     })}

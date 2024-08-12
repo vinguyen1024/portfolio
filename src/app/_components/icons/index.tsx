@@ -8,6 +8,7 @@ export { default as IconEmail } from './Email';
 export { default as IconLight } from './Light';
 export { default as IconLinkedIn } from './LinkedIn';
 export { default as IconLocation } from './Location';
+export { default as IconOpenFull } from './OpenFull';
 export { default as IconOpenNew } from './OpenNew';
 export { default as IconPhone } from './Phone';
 export { default as IconWebsite } from './Website';
