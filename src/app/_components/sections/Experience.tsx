@@ -20,7 +20,7 @@ const Experience = () => (
                     </div>
                 );
             })}
-            <p className={styles.resume}><ExternalLink url="#" text="View full resume"/></p>
+            <p className={styles.resume}><ExternalLink url="/resume" text="View full resume"/></p>
         </div>
     </>
 );
