@@ -12,8 +12,17 @@ const Heading = () => {
     const subHeadingEl = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
-        // Common params used in both Typed instances
-        const typedParams = {
+        // Elements currently have text in SSR for SEO purposes.
+        // Clearing out the contents for a cleaner Typed effect
+        if (headingEl.current) {
+            headingEl.current.textContent = '';
+        }
+        if (subHeadingEl.current) {
+            subHeadingEl.current.textContent = '';
+        }
+
+        // Common options used in both Typed instances
+        const typedOptions = {
             typeSpeed: 50,
             showCursor: false,
             onBegin: (self: TypedWithEl) => {
@@ -25,7 +34,7 @@ const Heading = () => {
         };
 
         const typedHeading = new Typed(headingEl.current, {
-            ...typedParams,
+            ...typedOptions,
             strings: [`&lt;${header.title}/&gt;`],
             onComplete: (self: TypedWithEl) => {
                 // Updating class and text of the header so the html symbols 
@@ -36,7 +45,7 @@ const Heading = () => {
         });
 
         const typedSubHeading = new Typed(subHeadingEl.current, {
-            ...typedParams,
+            ...typedOptions,
             strings: [
                 'Front-end enthusiast.',
                 'Dog owner.',
@@ -44,7 +53,7 @@ const Heading = () => {
                 'Casual gamer.',
                 `${header.position}.`
             ],
-            startDelay: 2250,
+            startDelay: 1500,
             backSpeed: 50,
         });
 
