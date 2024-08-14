@@ -1,0 +1,49 @@
+@import './_variables.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        max-width: $content-max-width;
+        padding: 0 3em;
+        margin: 20px;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0 10px;
+    }
+
+    ul, li {
+        list-style: none;
+    }
+
+    a {
+        background-image: none;
+
+        svg {
+            transition: transition(fill);
+            width: 20px;
+            height: auto;
+            fill: var(--text-link);
+        }
+
+        &:hover svg{
+            fill: var(--text-link-accent);
+        }
+
+        :global(.dark) & {
+            svg {
+                fill: var(--text-link-accent);
+            }
+
+            &:hover {
+                fill: var(--text-link);
+            }
+        }
+    }
+}

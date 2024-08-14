@@ -1,3 +1,5 @@
+@import './_variables.scss';
+
 .container {
     &:not(:global(#header)) > div {
         position: relative;
@@ -18,10 +20,7 @@
     }
 
     > div {
-        padding: 3em;
-        max-width: 900px;
-        box-sizing: border-box;
-        margin: 8em 20px;
+        @include main-content;
 
         h2 {
             font-weight: normal;

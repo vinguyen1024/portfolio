@@ -1,0 +1,12 @@
+$content-max-width: 900px;
+
+@mixin main-content {
+    width: 100%;
+    max-width: $content-max-width;
+    padding: 3em;
+    margin: 8em 20px;
+}
+
+@function transition($property) {
+    @return $property + ' 333ms ease';
+}

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { Header, Main } from '@/_components';
+import { Footer, Header, Main } from '@/_components';
 import { metaData } from '@/_data/resume';
 import styles from '@/_styles/home.module.scss';
 
@@ -45,7 +45,7 @@ const Home: React.FC = () => {
             {theme === 'light' && <div className={styles.background} />}
             <Header {...{onIconClick, updateActiveElement, theme}} activeElement={currentView} />
             <Main updateActiveElement={updateActiveElement}/>
-            <footer />
+            <Footer />
         </div>
     )
 };

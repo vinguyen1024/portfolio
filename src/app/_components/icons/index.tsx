@@ -5,6 +5,7 @@ export { default as IconClose } from './Close';
 export { default as IconDark } from './Dark';
 export { default as IconDownload } from './Download';
 export { default as IconEmail } from './Email';
+export { default as IconGitHub } from './GitHub';
 export { default as IconLight } from './Light';
 export { default as IconLinkedIn } from './LinkedIn';
 export { default as IconLocation } from './Location';

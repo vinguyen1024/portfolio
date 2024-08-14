@@ -1,3 +1,7 @@
+@import './_variables.scss';
+
+$animation: cursor .75s infinite;
+
 .container {
     position: relative;
     z-index: 1;
@@ -6,10 +10,8 @@
         width: 100%;
 
         > div {
-            width: 100%;
+            @include main-content;
             margin: 0 auto;
-            padding: 3em;
-            max-width: 900px;
         }
     }
 
@@ -20,8 +22,7 @@
         h1, div {
             overflow: hidden;
             white-space: nowrap;
-            transition: font-size 333ms ease;
-
+            transition: transition(font-size);
             opacity: 0;
 
             &:global(.display) {
@@ -42,7 +43,7 @@
             margin: 0;
 
             &:after {
-                animation: cursor .75s infinite;
+                animation: $animation;
             }
 
             &:global(.complete) {
@@ -52,7 +53,6 @@
 
                 &:after {
                     content: '/>';
-                    opacity: 1;
                     animation: none;
                 }
             }
@@ -67,7 +67,8 @@
 
             &:after {
                 opacity: 0;
-                animation: cursor .75s infinite;
+                animation: $animation;
+                // adding delay to start after H1 is finished 'typing'
                 animation-delay: 1.75s;
             }
         }
@@ -75,7 +76,7 @@
 
     nav {
         width: 100%;
-        transition: max-height 333ms ease, opacity 333ms ease;
+        transition: transition(max-height), transition(opacity);
         max-height: 60px;
 
         ul, li {
@@ -124,7 +125,7 @@
             left: 0;
             width: 100%;
             box-shadow: 0 2px 4px rgba(#666,.24), 0 0 0 1px rgba(#666,.08);
-            transition: height 333ms ease;
+            transition: transition(height);
 
             > div {
                 z-index: 1;
@@ -138,8 +139,8 @@
                 background: rgba(var(--background-color), 0.7);
                 backdrop-filter: saturate(180%) blur(20px);
                 height: 100%;
-                position: absolute;
                 width: 100%;
+                position: absolute;
             }
         }
 
