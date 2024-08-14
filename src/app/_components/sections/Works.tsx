@@ -1,26 +1,32 @@
-import {useState} from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import {motion} from "framer-motion";
-import {Section, WorkModal} from '@/_components';
-import {IconOpenFull} from '@/_components/icons';
+import { motion } from "framer-motion";
+import { WorkModal } from '@/_components';
+import { IconOpenFull } from '@/_components/icons';
+import { WorkProps } from '@/_utils/types';
+import { works } from '@/_data/works';
 import styles from '@/_styles/works.module.scss';
-import {works} from '@/_data/works';
 
-const Works = () => {
-    const [selectedItem, setSelectedItem] = useState(false);
+interface Props extends WorkProps {
+    layoutId?: string; // layoutId will be added dynamically
+    handleClose?: () => void; // handleClose will be passed to the WorkModal
+}
 
-    const handleClose = () => setSelectedItem(false);
-    const handleShow = (item) => setSelectedItem(item);
+const Works: React.FC = () => {
+    const [selectedItem, setSelectedItem] = useState<number | null>(null);
+
+    const handleClose = () => setSelectedItem(null);
+    const handleShow = (item: number) => setSelectedItem(item);
 
     return (
         <>
             <h2>Works</h2>
             <div className={styles.container}>
                 <ul>
-                    {works.map((work, i) => {
+                    {works.map((work: Props, i: number) => {
                         return (
                             <motion.li key={`works-${i}`} layoutId={`works-${i}`} 
-                                    onClick={(e) => selectedItem === false && handleShow(i)}>
+                                    onClick={() => selectedItem === null && handleShow(i)}>
                                 <span>
                                     <Image
                                         src={work.images[0].src}
@@ -34,7 +40,7 @@ const Works = () => {
                         );
                     })}
                 </ul>
-                {selectedItem !== false && <WorkModal layoutId={`works-${selectedItem}`} {...works[selectedItem]} handleClose={handleClose} />}
+                {selectedItem !== null && <WorkModal layoutId={`works-${selectedItem}`} {...works[selectedItem]} handleClose={handleClose} />}
             </div>
         </>
     );

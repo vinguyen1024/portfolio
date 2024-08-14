@@ -1,6 +1,7 @@
-import './globals.scss';
+import React from 'react';
 import { Poppins } from 'next/font/google';
-import { header, metaData } from '@/_data/resume';
+import { metaData } from '@/_data/resume';
+import './globals.scss';
 
 const poppins = Poppins({ 
 	weight: ['300', '400', '500'],
@@ -10,7 +11,11 @@ const poppins = Poppins({
 
 export const metadata = metaData;
 
-export default function ResumeLayout({ children }) {
+interface Props {
+    children: React.ReactNode;
+}
+
+export default function ResumeLayout({ children }: Props) {
 	return (
 		<html lang="en" className={poppins.variable}>
 			<body>

@@ -1,5 +1,33 @@
-import {header, experience, contact, skills, education} from '@/_data/resume';
+import React from 'react';
+import {header, experience, contact, skills} from '@/_data/resume';
 import styles from '@/_styles/resume.module.scss';
+
+interface ExperienceItem {
+    company: {
+        name: string;
+        location: string;
+    };
+    position: {
+        title: string;
+        duration: string;
+    }[];
+    description: {
+    	title: string;
+    	details: string[];
+    }[];
+};
+
+interface Contact {
+	[icon: string]: {
+	    text: string;
+	    href?: string;
+	}
+}
+
+interface SkillItem {
+	title: string; 
+	contents: string;
+}
 
 const Resume = () => {
 	return (
@@ -13,7 +41,7 @@ const Resume = () => {
 			<main className={`clearfix ${styles.resume}`}>
 				<section className={styles.experience}>
 					<h2>Experience</h2>
-					{experience.map(({company, position, description}, i) => {
+					{experience.map(({company, position, description}: ExperienceItem, i: number) => {
 						return (
 							<div key={`experience-${i}`}>
 								<h3>{company.name} • {company.location}</h3>
@@ -38,11 +66,11 @@ const Resume = () => {
 				<section className={styles.contacts}>
 					<h2>Contact</h2>
 					<ul className={styles.contact}>
-						{Object.entries(contact).map(([icon, value]) => {
+						{Object.entries(contact as Contact).map(([icon, value]) => {
 							const {text, href} = value;
 							return (
 								<li className={styles[icon]} key={`contact-${icon}`}>
-									{href ? <a href={href} target="_blank">{text}</a> : text}
+									{href ? <a href={href} target="_blank" rel="noopener noreferrer">{text}</a> : text}
 								</li>
 							);
 						})}
@@ -50,7 +78,7 @@ const Resume = () => {
 				</section>
 				<section className={styles.skills}>
 					<h2>Skills</h2>
-					{skills.map(({title, contents}, i) => (
+					{skills.map(({title, contents}: SkillItem, i: number) => (
 						<div key={`skills-${i}`}>
 							<h3>{title}</h3>
 							<p>{contents}</p>

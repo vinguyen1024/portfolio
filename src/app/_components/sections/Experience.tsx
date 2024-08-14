@@ -1,18 +1,34 @@
-import {Chip, ExternalLink} from '@/_components';
-import {experience} from '@/_data/resume';
+import React from 'react';
+import { Chip, ExternalLink } from '@/_components';
+import { experience } from '@/_data/resume';
 import styles from '@/_styles/experience.module.scss';
 
-const Experience = () => (
+interface ExperienceItem {
+    company: {
+        name: string;
+    };
+    position: {
+        title: string;
+    }[];
+    summary: {
+        duration: string;
+        content: string;
+    };
+    technologies: string[];
+};
+
+const Experience: React.FC = () => (
     <>
         <h2>Experience</h2>
         <div className={styles.container}>
-            {experience.map(({company, position, summary, technologies}, i) => {
-                const {duration, content} = summary;
+            {experience.map((item: ExperienceItem, i: number) => {
+                const { company, position, summary, technologies } = item;
+                const { duration, content } = summary;
                 return (
                     <div key={`experience-${i}`}>
                         <h3>{company.name}</h3>
                         <span className={styles.duration}>{duration}</span>
-                        {position.map(({title}, j) => (
+                        {position.map(({ title }, j) => (
                             <span className={styles.position} key={`experience-${i}_position-${j}`}>{title}</span>
                         ))}
                         <p>{content}</p>

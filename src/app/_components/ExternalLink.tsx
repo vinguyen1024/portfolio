@@ -1,13 +1,19 @@
+import React from 'react';
 import Link from 'next/link';
-import {IconOpenNew} from '@/_components/icons';
+import { IconOpenNew } from '@/_components/icons';
 import styles from '@/_styles/external-link.module.scss';
 
-const ExternalLink = ({url, text, rel, className}) => {
-    return (
-        <Link href={url} rel={rel ? 'noopener noreferrer' : null} target="_blank" className={`${styles.container} ${className || ''}`}>
-            <>{text} <IconOpenNew/></>
-        </Link>
-    );
-};
+interface Props {
+    url: string;
+    text: string;
+    rel?: boolean | null;
+    className?: string;
+}
+
+const ExternalLink: React.FC<Props> = ({url, text, rel, className = ''}) => (
+    <Link href={url} rel={rel ? 'noopener noreferrer' : undefined} target="_blank" className={`${styles.container} ${className}`}>
+        {text} <IconOpenNew/>
+    </Link>
+);
 
 export default ExternalLink;

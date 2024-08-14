@@ -1,8 +1,14 @@
-import {About, Experience, Section, Works} from '@/_components';
+import React from 'react';
+import { About, Experience, Section, Works } from '@/_components';
 
-const Main = ({getActiveElement}) => {
+interface Props {
+    updateActiveElement: (activeId: string) => void;
+};
 
-    const sections = {
+type SectionKey = 'about' | 'experience' | 'works';
+
+const Main: React.FC<Props> = ({ updateActiveElement }) => {
+    const sections: Record<SectionKey, React.ReactElement> = {
         about: <About />,
         experience: <Experience />,
         works: <Works />
@@ -10,13 +16,16 @@ const Main = ({getActiveElement}) => {
 
     return (
         <main>
-            {Object.keys(sections).map((id) => (
-                <Section key={id} id={id} getActiveElement={getActiveElement}>
-                    {sections[id]}
-                </Section>
-            ))}
+            {Object.keys(sections).map((key) => {
+                const id = key as SectionKey;
+                return (
+                    <Section key={id} id={id} updateActiveElement={updateActiveElement}>
+                        {sections[id as SectionKey]}
+                    </Section>
+                )
+            })}
         </main>
-    )
+    );
 };
 
 export default Main;

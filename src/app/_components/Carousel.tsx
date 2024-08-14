@@ -1,11 +1,14 @@
-import {Children} from 'react';
-import {Splide, SplideTrack, SplideSlide} from '@splidejs/react-splide';
-import {IconChevronLeft, IconChevronRight} from '@/_components/icons';
+import React, { Children } from 'react';
+import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
+import { IconChevronLeft, IconChevronRight } from '@/_components/icons';
 import styles from '@/_styles/carousel.module.scss';
 import '@splidejs/react-splide/css/core';
 
+interface Props {
+  children: React.ReactNode
+}
 
-const Carousel = (({children, height, loop = true}) => {
+const Carousel: React.FC<Props> = (({ children }) => {
     // Splide carousel configuration options
     const slides = Children.toArray(children);
 
@@ -20,7 +23,7 @@ const Carousel = (({children, height, loop = true}) => {
     return (
         <div className={`carousel ${styles.container}`}>
             <Splide hasTrack={ false } options={splideOptions}>
-                <SplideTrack>{slides.map((slide, i) => <SplideSlide key={`slide-${i}`}>{slide}</SplideSlide>)}</SplideTrack>
+                <SplideTrack>{slides.map((slide: React.ReactNode, i: number) => <SplideSlide key={`slide-${i}`}>{slide}</SplideSlide>)}</SplideTrack>
                 <div className="splide__arrows">
                     <span className={`splide__arrow splide__arrow--prev ${styles.arrows} ${styles.prev}`}><IconChevronLeft /></span>
                     <span className={`splide__arrow splide__arrow--next ${styles.arrows} ${styles.next}`}><IconChevronRight /></span>
