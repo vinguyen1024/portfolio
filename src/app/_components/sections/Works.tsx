@@ -31,8 +31,12 @@ const Works: React.FC = () => {
                                     <Image
                                         src={work.images[0].src}
                                         alt={work.images[0].alt}
-                                        width={640}
-                                        height={360}
+                                        width={790}
+                                        height={222}
+                                        quality={80}
+                                        sizes="395px"
+                                        placeholder="blur"
+                                        blurDataURL={work.base64}
                                       />
                                       <IconOpenFull />
                                 </span>

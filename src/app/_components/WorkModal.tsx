@@ -10,7 +10,7 @@ interface Props extends WorkProps {
     children?: React.ReactNode;
 };
 
-const WorkModal: React.FC<Props> = ({ title, images, content, links, date, technologies, layoutId, handleClose }) => (
+const WorkModal: React.FC<Props> = ({ title, images, content, links, date, technologies, base64, layoutId, handleClose }) => (
     <Modal layoutId={layoutId} show={true} handleClose={handleClose}>
         <Carousel>
             {images.map((props, i) => (
@@ -18,8 +18,12 @@ const WorkModal: React.FC<Props> = ({ title, images, content, links, date, techn
                     {...props}
                     draggable="false"
                     key={`work-${layoutId}_image-${i}`}
-                    width={640}
-                    height={360}
+                    width={1280}
+                    height={720}
+                    quality={80}
+                    priority={true}
+                    placeholder="blur"
+                    blurDataURL={base64}
                   />
             ))}
         </Carousel>

@@ -16,7 +16,9 @@ const Carousel: React.FC<Props> = (({ children }) => {
         type: "loop", // Infinite carousel
         perPage: 1, // Number of items visible per page
         perMove: 1, // Move one item at a time
-        rewind: true, // Rewind to start when the end is reached
+        rewind: slides.length > 1 ? true : false, // Determines whether to start when the end is reached
+        arrows: slides.length > 1 ? true : false, // Determines whether to create/find arrows
+        drag: slides.length > 1 ? true : false, // Determines whether to allow to drag the carousel
         pagination: false, // Hide pagination dots
     };
 
@@ -24,10 +26,12 @@ const Carousel: React.FC<Props> = (({ children }) => {
         <div className={`carousel ${styles.container}`}>
             <Splide hasTrack={ false } options={splideOptions}>
                 <SplideTrack>{slides.map((slide: React.ReactNode, i: number) => <SplideSlide key={`slide-${i}`}>{slide}</SplideSlide>)}</SplideTrack>
-                <div className="splide__arrows">
-                    <span className={`splide__arrow splide__arrow--prev ${styles.arrows} ${styles.prev}`}><IconChevronLeft /></span>
-                    <span className={`splide__arrow splide__arrow--next ${styles.arrows} ${styles.next}`}><IconChevronRight /></span>
-                </div>
+                {slides.length > 1 ? (
+                    <div className="splide__arrows">
+                        <span className={`splide__arrow splide__arrow--prev ${styles.arrows} ${styles.prev}`}><IconChevronLeft /></span>
+                        <span className={`splide__arrow splide__arrow--next ${styles.arrows} ${styles.next}`}><IconChevronRight /></span>
+                    </div>
+                ) : null}
             </Splide>
         </div>
     )

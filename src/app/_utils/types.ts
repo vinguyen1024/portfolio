@@ -11,4 +11,5 @@ export interface WorkProps {
         url: string;
     }[];
     technologies: string[];
+    base64: string;
 };
