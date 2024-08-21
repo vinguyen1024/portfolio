@@ -2,6 +2,10 @@ import React from 'react';
 import {header, experience, contact, skills} from '@/_data/resume';
 import styles from '@/_styles/resume.module.scss';
 
+export const metadata = {
+	title: 'Resume'
+};
+
 interface ExperienceItem {
     company: {
         name: string;

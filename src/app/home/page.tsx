@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Footer, Header, Main } from '@/_components';
-import { metaData } from '@/_data/resume';
+import { title } from '@/_data/resume';
 import styles from '@/_styles/home.module.scss';
 
 type Theme = 'light' | 'dark';
@@ -35,7 +35,7 @@ const Home: React.FC = () => {
     const updateActiveElement = (activeId: string) => {
         // Update route if needed
         if (activeId && hashId !== activeId) {
-            history.replaceState({}, metaData.title, `#${activeId}`);
+            history.replaceState({}, title, `#${activeId}`);
         }
         setCurrentView(activeId);
     };

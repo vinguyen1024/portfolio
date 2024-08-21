@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Heading } from '@/_components/';
 import { IconDark, IconLight } from '@/_components/icons';
 import { useWindowSize } from '@/_hooks';
-import { contact, metaData } from '@/_data/resume';
+import { contact, title } from '@/_data/resume';
 import styles from '@/_styles/header.module.scss';
 
 // Navigation item type
@@ -75,7 +75,7 @@ const Header: React.FC<Props> = ({ activeElement, updateActiveElement, onIconCli
 
                 // lets remove any hashes from the url if we're scrolling back to the top
                 if (direction === 'up') {
-                    history.replaceState({}, metaData.title, window.location.href.split('#')[0]);
+                    history.replaceState({}, title, window.location.href.split('#')[0]);
                 }
             }
         };

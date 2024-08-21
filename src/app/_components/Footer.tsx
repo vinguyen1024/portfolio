@@ -20,7 +20,7 @@ const Footer = () => {
             <div>
                 <ul>
                     {links.map(({icon, text, href}, i) => (
-                        <li key={`footer-links-${i}`}><a href={href} title={text} rel="noopener noreferrer">{icon}</a></li>
+                        <li key={`footer-links-${i}`}><a href={href} title={text} rel="noopener noreferrer" target="_blank">{icon}</a></li>
                     ))}
                 </ul>
                 <p>© {header.title} {(new Date()).getFullYear()}</p>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Poppins } from 'next/font/google';
-import { metaData } from '@/_data/resume';
 import './globals.scss';
 
 const poppins = Poppins({ 
@@ -8,8 +7,6 @@ const poppins = Poppins({
 	subsets: ['latin'],
 	variable: '--poppins-font',
 });
-
-export const metadata = metaData;
 
 interface Props {
     children: React.ReactNode;
