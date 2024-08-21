@@ -1,17 +1,18 @@
 import React, { Children } from 'react';
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/react-splide';
 import { IconChevronLeft, IconChevronRight } from '@/_components/icons';
+import { gtmEvent } from '@/_utils/gtm';
 import styles from '@/_styles/carousel.module.scss';
 import '@splidejs/react-splide/css/core';
 
 interface Props {
-  children: React.ReactNode
+    gtmTitle?: string;
+    children: React.ReactNode
 }
 
-const Carousel: React.FC<Props> = (({ children }) => {
+const Carousel: React.FC<Props> = (({ gtmTitle, children }) => {
     // Splide carousel configuration options
     const slides = Children.toArray(children);
-
     const splideOptions = {
         type: "loop", // Infinite carousel
         perPage: 1, // Number of items visible per page
@@ -22,9 +23,16 @@ const Carousel: React.FC<Props> = (({ children }) => {
         pagination: false, // Hide pagination dots
     };
 
+    // Google Analytics
+    const handleMove = () => {
+        if (gtmTitle) {
+            gtmEvent({'event': 'carousel_clicked','carousel_title': gtmTitle});
+        }
+    };
+
     return (
         <div className={`carousel ${styles.container}`}>
-            <Splide hasTrack={ false } options={splideOptions}>
+            <Splide hasTrack={ false } options={splideOptions} onMove={handleMove}>
                 <SplideTrack>{slides.map((slide: React.ReactNode, i: number) => <SplideSlide key={`slide-${i}`}>{slide}</SplideSlide>)}</SplideTrack>
                 {slides.length > 1 ? (
                     <div className="splide__arrows">

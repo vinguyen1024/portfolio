@@ -12,7 +12,7 @@ interface Props extends WorkProps {
 
 const WorkModal: React.FC<Props> = ({ title, images, content, links, date, technologies, base64, layoutId, handleClose }) => (
     <Modal layoutId={layoutId} show={true} handleClose={handleClose}>
-        <Carousel>
+        <Carousel gtmTitle={title}>
             {images.map((props, i) => (
                 <Image
                     {...props}
