@@ -1,0 +1,68 @@
+.container {
+    position: relative;
+    width: 100%;
+
+    .background {
+        position:fixed;
+        background-color:hsla(303,100%,82%,1);
+        background-image:
+            radial-gradient(at 65% 91%, hsla(266,100%,73%,1) 0px, transparent 50%),
+            radial-gradient(at 73% 15%, hsla(195,92%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 30% 47%, hsla(248,100%,75%,1) 0px, transparent 50%),
+            radial-gradient(at 66% 60%, hsla(316,100%,65%,1) 0px, transparent 50%),
+            radial-gradient(at 79% 48%, hsla(199,98%,64%,1) 0px, transparent 50%),
+            radial-gradient(at 93% 95%, hsla(243,63%,74%,1) 0px, transparent 50%),
+            radial-gradient(at 29% 68%, hsla(237,100%,75%,1) 0px, transparent 50%);
+        background-size: 125% 125%;
+        filter: blur(80px);
+        animation: moveBackground 10s linear infinite;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        transform: scale(1.5);
+
+        :global(.dark) & {
+            background-color: none;
+            background-image: none;
+            display: none;
+            animation: none;
+        }
+    }
+}
+@keyframes moveBackground {
+    0% {
+        transform: translateX(0) translateY(0) scale(1.5);
+    }
+    10% {
+        transform: translateX(-10%) translateY(-40%) scale(2.4);
+    }
+    20% {
+        transform: translateX(35%) translateY(-20%) scale(2.1);
+    }
+    30% {
+        transform: translateX(-10%) translateY(-15%) scale(1.7);
+    }
+    40% {
+        transform: translateX(25%) translateY(15%) scale(1.9);
+    }
+    50% {
+        transform: translateX(40%) translateY(25%) scale(2);
+    }
+    60% {
+        transform: translateX(-25%) translateY(25%) scale(3.4);
+    }
+    70% {
+        transform: translateX(-5%) translateY(5%) scale(1.5);
+    }
+    80% {
+        transform: translateX(-40%) translateY(10%) scale(2.5);
+    }
+    90% {
+        transform: translateX(10%) translateY(10%) scale(1.7);
+    }
+    100% {
+        transform: translateX(0) translateY(0) scale(1.5);
+    }
+}

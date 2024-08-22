@@ -1,0 +1,29 @@
+.container {
+    > div {
+        position: relative;
+
+        & + div {
+            margin-top: 2.5rem;
+        }
+    }
+
+    h3 {
+        font-weight: 500;
+    }
+
+    .position {
+        display: block;
+    }
+
+    .duration {
+        float: right;
+    }
+
+    p {
+        margin-top: 0.5rem;
+    }
+
+    .resume {
+        margin-top: 2em;
+    }
+}

@@ -3,6 +3,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
+	position: relative;
 
 	strong {
 		font-weight: 500;
@@ -16,15 +17,18 @@
 		font-weight: 300;
 		font-size: 30px;
 		align-self: flex-end;
+		font-family: var(--roboto-font);
+		letter-spacing: 0;
 	}
 	p {
 		margin-top: 1.5em;
 		align-self: flex-start;
 		line-height: 0.85;
+		font-family: var(--roboto-font);
 	}
 	p strong {
 		text-transform: uppercase;
-		font-size: 60px;
+		font-size: 65px;
 	}
 	span {
 		display: block;
@@ -36,7 +40,7 @@
 			font-size: 6.125vw;
 		}
 		p strong {
-			font-size: 12.125vw;
+			font-size: 13.125vw;
 		}
 		span {
 			font-size: 5.275vw;

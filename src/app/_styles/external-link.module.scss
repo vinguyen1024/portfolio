@@ -1,0 +1,13 @@
+.container {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    background-image: linear-gradient(transparent calc(100% - 2px), var(--text-link-accent) 2px);
+    color: var(--text-link);
+
+    svg {
+        width: 14px;
+        height: 14px;
+        fill: var(--text-link);
+    }
+}
