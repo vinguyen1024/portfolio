@@ -1,4 +1,6 @@
 $width: 285px;
+$single-column: true;
+$hide-icons: true;
 
 .container {
     max-width: 1200px;
@@ -93,8 +95,8 @@ $width: 285px;
         &.education {
             order: 4;
 
-            h3 {
-                font-weight: normal;
+            > div:first-of-type h3 {
+                margin-top: 0;
             }
         }
         ul, li {
@@ -173,7 +175,7 @@ $width: 285px;
     @media screen and (max-width: 900px) {
         padding: 3em 2em;
 
-        main {
+        main.resume {
             display: flex;
             padding: 0;
             flex-flow: row wrap;
@@ -228,7 +230,7 @@ $width: 285px;
     @media print {
         $width: 200px;
 
-        padding: 1.6em;
+        padding: 1.25em;
 
         @page {
             size: auto;
@@ -308,13 +310,116 @@ $width: 285px;
         }
 
         .contact li {
-            font-size: 10pt;
             padding-left: 25px;
 
             &:before {
                 width: 18px;
                 height: 18px;
                 margin: 0 0 0 -25px;
+            }
+        }
+
+        // single column
+        @if $single-column {
+            h2 {
+                font-size: 12.5pt;
+            }
+
+            main.resume {
+                display: flex;
+                padding: 0;
+                flex-flow: row wrap;
+            }
+            section {
+                > div {
+                    margin: 0;
+                }
+
+                &.experience {
+                    > div + div {
+                        margin-top: 0.25em;
+                    }
+                }
+
+                &.contacts, &.skills, &.education {
+                    margin-left: 0;
+                    margin-right: 0;
+                    width: 100%;
+                    float: none;
+                }
+
+                &.contacts {
+                    margin: -10px 0 10px -5px;
+
+                    h2 {
+                        display: none;
+                    }
+
+                    ul {
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: space-between;
+                    }
+
+                    li {
+                        padding-left: 20px;
+
+                        &:before {
+                            margin: -2px 0 0 -20px;
+                        }
+                    }
+
+                    @if $hide-icons {
+                        margin-left: 0;
+
+                        li {
+                            margin: 0;
+                            padding-left: 0;
+
+                            &:before {
+                                content: none;
+                            }
+
+                            &:after {
+                                content: "•";
+                                margin: 0 8px;
+                            }
+
+                            &:last-of-type:after {
+                                content: none;
+                            }
+                        }
+                    }
+                }
+
+                &.skills {
+                    margin-top: 10px;
+
+                    > div {
+                        margin: 0;
+                        line-height: 1;
+                    }
+
+                    h3 {
+                        font-size: 9pt;
+                        white-space: nowrap;
+
+                        &:after {
+                            content: ":";
+                            margin-right: 5px;
+                        }
+                    }
+
+                    h3, p {
+                        display: inline;
+                    }
+                }
+
+
+
+                &.education h3 {
+                    font-size: 9pt;
+                }
             }
         }
     }
