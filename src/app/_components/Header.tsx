@@ -39,9 +39,14 @@ const navigation: NavigationItem[] = [
 // Type for scroll direction
 type Direction = "up" | "down";
 
+interface ActiveElement {
+    isIntersecting: boolean;
+    activeId: string;
+}
+
 interface Props {
-    activeElement: string;
-    updateActiveElement: (activeId: string)=>void;
+    activeElement: ActiveElement;
+    updateActiveElement: (isIntersecting: boolean, activeId: string) => void;
     onIconClick: ()=>void;
     theme: 'light' | 'dark';
 };
@@ -51,6 +56,7 @@ const Header: React.FC<Props> = ({ activeElement, updateActiveElement, onIconCli
     /**
      * Attaching event listeners for sticky header
      */
+    const {isIntersecting, activeId} = activeElement;
     const [isScrolled, setIsScrolled] = useState<boolean>(false);
     const [scrollDirection, setScrollDirection] = useState<Direction | false>(false);
     const windowSize = useWindowSize();
@@ -66,12 +72,19 @@ const Header: React.FC<Props> = ({ activeElement, updateActiveElement, onIconCli
             setScrollDirection(direction);
             lastScrollTop = scrollTop;
 
+            const scrolledThreshold = scrollTop > (windowSize.height ?? 0) / 2;
             // detect if the page scrolled past splash
             setIsScrolled(scrollTop > (windowSize.height ?? 0) / 2);
 
+            if (scrolledThreshold) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+
             // set the current view to null when scrolled to top
             if (scrollTop < (windowSize.height ?? 0) / 2) {
-                updateActiveElement('');
+                updateActiveElement(isIntersecting, '');
 
                 // lets remove any hashes from the url if we're scrolling back to the top
                 if (direction === 'up') {
@@ -95,13 +108,12 @@ const Header: React.FC<Props> = ({ activeElement, updateActiveElement, onIconCli
         const {element, href} = (e.currentTarget as HTMLElement).dataset;
 
         // no need to trigger scrollIntoView if we're already there
-        if (href == activeElement) {
+        if (href == activeElement.activeId) {
             return;
         }
 
         document.getElementById(element ?? '')?.scrollIntoView({behavior: "smooth"});
     };
-
 
     return (
         <header id="header" className={[
@@ -115,11 +127,12 @@ const Header: React.FC<Props> = ({ activeElement, updateActiveElement, onIconCli
                     <Link href="/" className={styles.logo} onClick={onClickHandler} replace data-element="header" data-href="/">
                         <Heading />
                     </Link>
+
                     <nav>
                         <ul>
                             {navigation.map(({name, href, onClick}) => {
                                 const element = name.toLocaleLowerCase();
-                                const isActive = activeElement == element;
+                                const isActive = activeId == element && isIntersecting;
                                 return (
                                     <li key={`navigation-${element}`} className={isActive ? styles.active : undefined}>
                                         <Link href={href} onClick={onClick ? onClickHandler : undefined} data-element={element} data-href={href}>{name}</Link>

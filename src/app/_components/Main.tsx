@@ -2,7 +2,7 @@ import React from 'react';
 import { About, Experience, Section, Works } from '@/_components';
 
 interface Props {
-    updateActiveElement: (activeId: string) => void;
+    updateActiveElement: (isIntersecting: boolean, activeId: string) => void;
 };
 
 type SectionKey = 'about' | 'experience' | 'works';

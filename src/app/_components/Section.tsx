@@ -1,22 +1,24 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import {useWindowSize} from '@/_hooks';
 import {debounce} from '@/_utils';
 import styles from '@/_styles/section.module.scss';
 
 interface Props {
     id: string;
-    updateActiveElement: (activeId: string)=>void;
+    updateActiveElement: (isIntersecting: boolean, activeId: string) => void;
     children: React.ReactNode
 };
 
 const Section: React.FC<Props> = ({id, updateActiveElement, children}) => {
     const ref = useRef<HTMLElement | null>(null);
     const windowSize = useWindowSize();
+    const [isInterSecting, setIsIntersecting] = useState(false);
 
     /**
      * Intersection Observer to detect which section is currently showing
      */
     useEffect(() => {
+
         if (!ref.current) {
             return;
         }
@@ -31,8 +33,9 @@ const Section: React.FC<Props> = ({id, updateActiveElement, children}) => {
 
         const observeCallback = debounce((entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
+            setIsIntersecting(entry.isIntersecting);
             if (entry.isIntersecting) {
-                updateActiveElement(entry.target.id);
+                updateActiveElement(true, entry.target.id);
             }
         }, 200);
 
@@ -45,8 +48,10 @@ const Section: React.FC<Props> = ({id, updateActiveElement, children}) => {
         };
     }, [windowSize]);
 
+    const activeClassName = isInterSecting ? styles.active : '';
+
     return (
-        <section id={id} ref={ref} className={['page-sections', 'flex', styles.container].join(' ')}>
+        <section id={id} ref={ref} className={`page-sections flex ${activeClassName} ${styles.container}`}>
             <div>{children}</div>
         </section>
     );
