@@ -1,7 +1,12 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
-  "private": true,
+  "description": "Personal Website",
+  "version": "1.0.0",
+  "author": "Vi Nguyen <contact@vinguyen.me>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinguyen1024/portfolio"
+  },
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
@@ -14,7 +19,7 @@
   "dependencies": {
     "@splidejs/react-splide": "^0.7.12",
     "framer-motion": "^11.3.19",
-    "next": "14.2.5",
+    "next": "^14.2.5",
     "react": "^18",
     "react-dom": "^18",
     "typed.js": "^2.1.0"
