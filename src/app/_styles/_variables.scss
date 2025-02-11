@@ -24,8 +24,9 @@ $mobile-width: 485px;
     stroke-dasharray: $offset;
     stroke-dashoffset: $offset;
     animation: $name + ' linear forwards';
-    animation-timeline: $timeline;
-    transition: transition(stroke-dashoffset);
+    @supports (animation-timeline: view()) {
+        animation-timeline: $timeline;
+    }
 }
 
 // =============
