@@ -52,7 +52,7 @@ const Section: React.FC<Props> = ({id, updateActiveElement, children}) => {
 
     return (
         <section id={id} ref={ref} className={`page-sections flex ${activeClassName} ${styles.container}`}>
-            <div>{children}</div>
+            {children}
         </section>
     );
 };

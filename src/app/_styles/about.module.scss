@@ -1,0 +1,80 @@
+@use 'sass:color';
+@import './_variables.scss';
+
+.about-container {
+    &:before, &:after {
+        background-color: color.adjust($color-secondary, $lightness: 15);
+        mix-blend-mode: overlay;
+    }
+    &:before {
+        height: 330px;
+        mask-image: url('/images/dash-element-1.svg');
+        top: -5%;
+        left: -8%;
+        aspect-ratio: 119/330;
+    }
+    &:after {
+        height: 277px;
+        mask-image: url('/images/dash-element-2.svg');
+        right: -8%;
+        bottom: 2%;
+        aspect-ratio: 88/227;
+    }
+
+    svg:global(.arrow-down) {
+        $strokeOffset: 600;
+        max-height: 360px;
+        height: 33.5vh;
+        top: -40vh;
+        left: 40%;
+
+        path {
+            vector-effect: non-scaling-stroke;
+            $color: color.adjust($color-main, $hue: 11, $lightness: 42);
+            @include drawSectionDoodle(drawArrowDown, $color, $strokeOffset, view(70% 12%));
+        }
+
+        @media (min-height: $flex-max-height + 1) {
+            top: -400px;
+
+            path {
+                animation-timeline: view(100% 12%);
+            }
+        }
+
+        @media (max-width: $mobile-width) {
+            height: 25vh;
+            top: -30vh;
+        }
+
+        @include keyframeDraw(drawArrowDown, $strokeOffset + 200);
+    }
+
+    & :global .sparkle {
+        height: 90px;
+        top: 50px;
+        right: -10%;
+        fill: $color-tertiary;
+        mix-blend-mode: overlay;
+    }
+
+    & :global .moon {
+        height: 105px;
+        bottom: 35px;
+        left: -20%;
+        fill: $color-main;
+        mix-blend-mode: screen;
+    }
+
+    :global(.dark) & {
+        :global(.sparkle), :global(.moon) {
+            mix-blend-mode: normal;
+        }
+        :global .sparkle {
+            fill: color.adjust($color-tertiary, $lightness: 25);
+        }
+        :global .moon {
+            fill: color.adjust($color-main, $lightness: 25);
+        }
+    }
+}

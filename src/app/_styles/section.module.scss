@@ -1,34 +1,24 @@
+@use 'sass:color';
 @import './_variables.scss';
 
 .container {
-    &:not(:global(#header)) > div {
+    > div {
+        @include main-content;
         position: relative;
-
-        &:last-of-type {
-            margin-bottom: 3em;
-        }
-
-        h2 {
-            display: inline;
-            padding: 0 0.25em;
-            width: auto;
-        }
 
         p {
             position: relative;
         }
-    }
-
-    > div {
-        @include main-content;
 
         h2 {
+            display: inline;
             font-weight: normal;
             font-size: 3em;
             text-transform: lowercase;
             color: var(--text-accent);
             width: 100%;
             margin: 0 0 0.5em -0.4em;
+            padding: 0 0.25em;
     
             &:before {
                 content: '<';
@@ -37,6 +27,55 @@
                 content: '/>';
             }
         }
+
+        > svg, > span svg, &:before, &:after {
+            position: absolute;
+            z-index: -1;
+        }
+
+        &:before, &:after {
+            opacity: 0;
+            content: '';
+            display: block;
+            mask-repeat: no-repeat;
+            mask-position: top left;
+            mask-size: contain;
+            transition: transition(opacity);
+        }
+
+        > span svg {
+            transform: translateZ(0);
+            fill-opacity: 0;
+            transition: transition(fill-opacity);
+
+            &:global(.sparkle), &:global(.sun), &:global(.heart-swirl) {
+                animation: fade 2s ease infinite, bounce 1.5s ease-out infinite;
+            }
+
+            &:global(.moon), &:global(.rainbow), &:global(.star) {
+                animation: fade 2s ease infinite, bounceReverse 1.5s ease-out infinite;
+            }
+
+            @include keyframeBounce;
+            @include keyframeBounce(bounceReverse, -25px);
+            @include keyframeFade;
+        }
+    }
+
+    &.active > div {
+        &:before, &:after {
+            opacity: 1;
+        }
+
+        > span svg {
+            fill-opacity: 1;
+        }
+    }
+
+    :global(.dark) &.container > div {
+        &:before, &:after {
+            mix-blend-mode: normal;
+        }
     }
 }
 
@@ -44,7 +83,7 @@
 // media queries 
 // =============
 @media (max-width: 660px) {
-    .container:not(:global(#header)) > div {
+    .container > div {
         padding: 1.5em;
 
         h2 {

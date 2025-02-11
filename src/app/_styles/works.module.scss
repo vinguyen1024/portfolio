@@ -1,5 +1,95 @@
-.container {
+@use 'sass:color';
+@import './_variables.scss';
+
+.works-container {
+    &:before, &:after {
+        background-color: $color-tertiary;
+        mix-blend-mode: screen;
+    }
+    &:before {
+        height: 154px;
+        mask-image: url('/images/dash-element-4.svg');
+        top: 10%;
+        right: -10%;
+        aspect-ratio: 78/154;
+    }
+    &:after {
+        height: 297px;
+        mask-image: url('/images/dash-element-5.svg');
+        bottom: 20%;
+        left: -15%;
+        aspect-ratio: 99/297;
+    }
+    :global(.dark) & { 
+        &:before, &:after {
+            background-color: color.adjust($color-tertiary, $lightness: 29);
+        }
+    }
+
+    svg:global(.swirl-arrow-down) {
+        $strokeOffset: 1150;
+
+        max-height: 300px;
+        height: 29vh;
+        top: -27vh;
+        right: 35%;
+        transform: rotate(10deg);
+        overflow: visible;
+
+        path {
+            vector-effect: non-scaling-stroke;
+            $color: color.adjust($color-tertiary, $hue: 20, $saturation: -24%, $lightness: 41);
+            @include drawSectionDoodle(drawSwirlArrowDown, $color, $strokeOffset, view(70% 12%));
+        }
+
+        @media (min-height: $flex-max-height + 1) {
+            top: -280px;
+
+            path {
+                animation-timeline: view(100% 12%);
+            }
+        }
+
+        @media (max-width: $mobile-width) {
+            height: 20vh;
+            top: -20vh;
+        }
+
+        @include keyframeDraw(drawSwirlArrowDown, $strokeOffset + 200);
+    }
+
+    :global .heart-swirl {
+        height: 100px;
+        top: 120px;
+        left: -20%;
+        fill: color.adjust($color-main, $saturation: -1%, $lightness: 19);
+        
+    }
+
+    :global .star {
+        height: 120px;
+        bottom: -30px;
+        right: -10%;
+        fill: color.adjust($color-secondary, $hue: 5, $lightness: 14);
+        
+    }
+
+    :global(.dark) & {
+        :global .heart-swirl, :global .star {
+            mix-blend-mode: normal;
+        }
+        :global .heart-swirl {
+            fill: color.adjust($color-main, $lightness: 30);
+        }
+        :global .star {
+            fill: color.adjust($color-secondary, $lightness: 30);
+        }
+    }
+}
+
+.works {
     position: relative;
+    z-index: 1;
 
     ul, li {
         list-style: none;
@@ -72,7 +162,7 @@
 // =============
 
 @media (max-height: 760px) {
-    .container { 
+    .works { 
         :global(.carousel > div) {
             &, img {
                 max-height: 48vh!important;
@@ -89,7 +179,7 @@
 }
 
 @media (max-width: 660px) {
-    .container { 
+    .works { 
         > ul li {
             width: calc(50% - 10px);
         }
@@ -106,7 +196,7 @@
 }
 
 @media (max-width: 500px) {
-    .container { 
+    .works { 
         > ul li {
             width: 100%;
             height: 200px;
