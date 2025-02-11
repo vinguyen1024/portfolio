@@ -1,5 +1,6 @@
 import Script from "next/script";
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import { Poppins } from 'next/font/google';
 import { metaData } from '@/_data/resume';
 import './globals.scss';
@@ -8,6 +9,13 @@ const poppins = Poppins({
     weight: ['300', '400', '500'],
     subsets: ['latin'],
     variable: '--poppins-font',
+});
+
+const deliciousHandrawn = localFont({ 
+    src: './_fonts/delicious-handrawn.woff2',
+    variable: '--delicious-handrawn-font',
+    display: 'swap',
+    adjustFontFallback: false,
 });
 
 export const metadata: Metadata = metaData;
@@ -25,7 +33,7 @@ export default function RootLayout({children}: Readonly<{children: React.ReactNo
                     gtag('config', '${process.env.GTM_ID}');
               `
             }}/>
-            <body className={poppins.className}>
+            <body className={`${poppins.className} ${deliciousHandrawn.variable}`}>
                 <noscript>
                     <iframe
                       src={`https://www.googletagmanager.com/ns.html?id=${process.env.GTM_ID}`}

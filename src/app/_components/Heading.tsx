@@ -53,7 +53,7 @@ const Heading = () => {
                 'Casual gamer.',
                 `${header.position}.`
             ],
-            startDelay: 1500,
+            startDelay: 1750,
             backSpeed: 50,
         });
 

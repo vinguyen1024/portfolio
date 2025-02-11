@@ -1,3 +1,8 @@
+@use 'sass:color';
+@import './_styles/_variables.scss';
+
+$color-link-accent: color.adjust($color-secondary, $lightness: 18.04%);
+
 :root {
     --max-width: 1100px;
     --border-radius: 12px;
@@ -8,11 +13,11 @@
     --foreground-color: #fff;
     --background-color: #fff;
     --background-color-dark: #121212;
-    --text-accent: #ff0099;
+    --text-accent: #{$color-main};
     --text-deemphasized: #777;
-    --text-link: #8500ff;
-    --text-link-accent: #b15cff;
-    --button-background-color: #0070e3;
+    --text-link: #{$color-secondary};
+    --text-link-accent: #{$color-link-accent};
+    --button-background-color: #{$color-tertiary};
 }
 
 * {
@@ -57,7 +62,12 @@ body.dark {
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
+    font-family: var(--delicious-handrawn-font);
+    letter-spacing: .1em;
+}
+
+h3, h4, h5, h6 {
     font-family: var(--poppins-font);
     letter-spacing: .1em;
 }
@@ -71,6 +81,12 @@ strong {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
+    @media (min-height: $flex-max-height + 1) {
+        height: $flex-max-height;
+        min-height: initial;
+        max-height: $flex-max-height;
+    }
 }
 
 .clearfix {

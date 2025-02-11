@@ -1,4 +1,11 @@
+$color-main: #ff0099;
+$color-secondary: #8500ff;
+$color-tertiary: #0070e3;
+
 $content-max-width: 900px;
+$flex-max-height: 1080px;
+
+$mobile-width: 485px;
 
 @mixin main-content {
     width: 100%;
@@ -9,4 +16,122 @@ $content-max-width: 900px;
 
 @function transition($property) {
     @return $property + ' 333ms ease';
+}
+
+
+@mixin drawSectionDoodle($name, $color, $offset, $timeline) {
+    stroke: $color;
+    stroke-dasharray: $offset;
+    stroke-dashoffset: $offset;
+    animation: $name + ' linear forwards';
+    animation-timeline: $timeline;
+    transition: transition(stroke-dashoffset);
+}
+
+// =============
+//   keyframes
+// =============
+@mixin keyframeMoveBackground {
+    @keyframes moveBackground {
+        0% {
+            transform: translateX(0) translateY(0) scale(1.5);
+        }
+        10% {
+            transform: translateX(-10%) translateY(-40%) scale(2.4);
+        }
+        20% {
+            transform: translateX(35%) translateY(-20%) scale(2.1);
+        }
+        30% {
+            transform: translateX(-10%) translateY(-15%) scale(1.7);
+        }
+        40% {
+            transform: translateX(25%) translateY(15%) scale(1.9);
+        }
+        50% {
+            transform: translateX(40%) translateY(25%) scale(2);
+        }
+        60% {
+            transform: translateX(-25%) translateY(25%) scale(3.4);
+        }
+        70% {
+            transform: translateX(-5%) translateY(5%) scale(1.5);
+        }
+        80% {
+            transform: translateX(-40%) translateY(10%) scale(2.5);
+        }
+        90% {
+            transform: translateX(10%) translateY(10%) scale(1.7);
+        }
+        100% {
+            transform: translateX(0) translateY(0) scale(1.5);
+        }
+    }
+}
+
+@mixin keyframeDraw($name, $offset) {
+    @keyframes #{$name} {
+        0% {
+            stroke-dashoffset: $offset;
+            
+        }
+        100% {
+            stroke-dashoffset: 0;
+
+        }
+    }  
+}
+
+@mixin keyframeCursor {
+    @keyframes cursor {
+        from, to { 
+            opacity: 0
+        }
+        50% { 
+            opacity: 1 
+        }
+    }
+}
+
+@mixin keyframeVisibility {
+    @keyframes visibility {
+        99% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+    }
+}
+
+@mixin keyframeBounce($name: bounce, $value: 25px) {
+    @keyframes #{$name} {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY($value);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+}
+
+@mixin keyframeFade {
+    @keyframes fade {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
 }

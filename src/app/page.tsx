@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Footer, Header, Main } from '@/_components';
+import { DoodleHeart } from '@/_components/doodles';
 import { title } from '@/_data/resume';
 import styles from '@/_styles/home.module.scss';
 
@@ -53,6 +54,7 @@ const Home: React.FC = () => {
     return (
         <div className={styles.container}>
             {theme === 'light' && <div className={styles.background} />}
+            <div className={styles.heart}><DoodleHeart /></div>
             <Header {...{onIconClick, activeElement, updateActiveElement, theme}} />
             <Main updateActiveElement={updateActiveElement}/>
             <Footer />
