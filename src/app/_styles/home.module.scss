@@ -1,3 +1,6 @@
+@use 'sass:color';
+@import './_variables.scss';
+
 .container {
     position: relative;
     width: 100%;
@@ -30,39 +33,63 @@
             animation: none;
         }
     }
-}
-@keyframes moveBackground {
-    0% {
-        transform: translateX(0) translateY(0) scale(1.5);
+
+    .heart {
+        $strokeOffset: 1200;
+
+        position: absolute;
+        top: 50vh;
+        right: 25%;
+        transform: translate(50%, -50%);
+        mix-blend-mode: plus-lighter;
+
+        @media (min-height: $flex-max-height + 1) {
+          top: 390px;
+          transform: translate(50%, 0);
+        }
+
+        @media (min-width: 1920px + 1) {
+            transform: translate(-20%, -50%);
+        }
+
+        svg {
+            width: 300px;
+            overflow: visible;
+            transition: stroke-opacity 1s ease;
+            animation: fade 2s ease infinite, bounce 1.5s ease-out infinite;
+            animation-delay: 3.25s;
+
+            @media (max-width: $mobile-width) {
+                width: 200px;
+            }
+        }
+
+        path {
+            stroke: $color-main;
+            stroke-dasharray: $strokeOffset;
+            stroke-dashoffset: $strokeOffset;
+            animation: visibility forwards, draw 1s linear forwards;
+            visibility: hidden;
+            animation-delay: 2s;
+        }
+
+        :global(.dark) & {
+            mix-blend-mode: normal;
+            
+            path {
+                stroke: color.adjust($color-main, $lightness: 20);
+            }
+        }
+
+        :global(.scrolled) & svg {
+            stroke-opacity: 0;
+        }
+
+        @include keyframeVisibility;
+        @include keyframeDraw(draw, $strokeOffset);
+        @include keyframeBounce;
+        @include keyframeFade;
     }
-    10% {
-        transform: translateX(-10%) translateY(-40%) scale(2.4);
-    }
-    20% {
-        transform: translateX(35%) translateY(-20%) scale(2.1);
-    }
-    30% {
-        transform: translateX(-10%) translateY(-15%) scale(1.7);
-    }
-    40% {
-        transform: translateX(25%) translateY(15%) scale(1.9);
-    }
-    50% {
-        transform: translateX(40%) translateY(25%) scale(2);
-    }
-    60% {
-        transform: translateX(-25%) translateY(25%) scale(3.4);
-    }
-    70% {
-        transform: translateX(-5%) translateY(5%) scale(1.5);
-    }
-    80% {
-        transform: translateX(-40%) translateY(10%) scale(2.5);
-    }
-    90% {
-        transform: translateX(10%) translateY(10%) scale(1.7);
-    }
-    100% {
-        transform: translateX(0) translateY(0) scale(1.5);
-    }
+
+    @include keyframeMoveBackground;
 }

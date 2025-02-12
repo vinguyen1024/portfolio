@@ -1,14 +1,17 @@
 import React from 'react';
 import { Chip, ExternalLink } from '@/_components';
+import { DoodleRainbow, DoodleSun, DoodleSwirlLeft } from '@/_components/doodles';
 import { experience } from '@/_data/resume';
 import styles from '@/_styles/experience.module.scss';
 
 interface ExperienceItem {
     company: {
         name: string;
+        location?: string;
     };
     position: {
         title: string;
+        duration?: string;
     }[];
     summary: {
         duration: string;
@@ -18,11 +21,18 @@ interface ExperienceItem {
 };
 
 const Experience: React.FC = () => (
-    <>
+    <div className={styles['experience-container']}>
+        <DoodleSwirlLeft/>
+        <span>
+            <DoodleRainbow/>
+        </span>
+        <span>
+            <DoodleSun/>
+        </span>
         <h2>Experience</h2>
-        <div className={styles.container}>
-            {experience.map((item: ExperienceItem, i: number) => {
-                const { company, position, summary, technologies } = item;
+        <div className={styles.experiences}>
+            {experience.map((item, i) => {
+                const { company, position, summary, technologies } = item as ExperienceItem;
                 const { duration, content } = summary;
                 return (
                     <div key={`experience-${i}`}>
@@ -38,7 +48,7 @@ const Experience: React.FC = () => (
             })}
             <p className={styles.resume}><ExternalLink url="/resume" text="View full resume"/></p>
         </div>
-    </>
+    </div>
 );
 
 export default Experience;

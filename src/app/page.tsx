@@ -1,10 +1,16 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import { Footer, Header, Main } from '@/_components';
+import { DoodleHeart } from '@/_components/doodles';
 import { title } from '@/_data/resume';
 import styles from '@/_styles/home.module.scss';
 
 type Theme = 'light' | 'dark';
+
+interface ActiveElement {
+    isIntersecting: boolean;
+    activeId: string;
+}
 
 const Home: React.FC = () => {
     /**
@@ -24,26 +30,32 @@ const Home: React.FC = () => {
     };
 
     let hashId = '';
+    let scrollTop = 0;
     useEffect(() => {
         hashId = window.location.hash.substring(1);
+        scrollTop = document.body.scrollTop;
     }, []);
 
     /**
      * Callback to set the current view and update history
      */
-    const [currentView, setCurrentView] = useState<string>('');
-    const updateActiveElement = (activeId: string) => {
+    const [activeElement, setActiveElement] = React.useState<ActiveElement>({
+        isIntersecting: false,
+        activeId: '',
+    });
+    const updateActiveElement = (isIntersecting: boolean, activeId: string) => {
         // Update route if needed
-        if (activeId && hashId !== activeId) {
+        if (activeId && hashId !== activeId && scrollTop !== 0) {
             history.replaceState({}, title, `#${activeId}`);
         }
-        setCurrentView(activeId);
+        setActiveElement({isIntersecting, activeId});
     };
 
     return (
         <div className={styles.container}>
             {theme === 'light' && <div className={styles.background} />}
-            <Header {...{onIconClick, updateActiveElement, theme}} activeElement={currentView} />
+            <div className={styles.heart}><DoodleHeart /></div>
+            <Header {...{onIconClick, activeElement, updateActiveElement, theme}} />
             <Main updateActiveElement={updateActiveElement}/>
             <Footer />
         </div>

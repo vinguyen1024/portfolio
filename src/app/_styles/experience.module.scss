@@ -1,4 +1,84 @@
-.container {
+@use 'sass:color';
+@import './_variables.scss';
+
+.experience-container {
+    &:after {
+        height: 322px;
+        mask-image: url('/images/dash-element-3.svg');
+        right: -15%;
+        bottom: 5%;
+        background-color: color.adjust($color-main, $lightness: 15);
+        mix-blend-mode: lighten;
+        transform: rotate(350deg);
+        aspect-ratio: 253/322;
+    }
+
+    :global(.dark) &:after {
+        background-color: color.adjust($color-main, $lightness: 25);
+    }
+
+    svg:global(.swirl-left) {
+        $strokeOffset: 990;
+
+        max-height: 370px;
+        height: 30vh;
+        top: -30vh;
+        left: 15%;
+
+        path {
+            vector-effect: non-scaling-stroke;
+            $color: color.adjust($color-secondary, $hue: 4, $lightness: 41);
+            @include drawSectionDoodle(drawSwirlLeft, $color, $strokeOffset, view(70% 12%));
+        }
+
+        @media (min-height: $flex-max-height + 1) {
+            top: -380px;
+
+            path {
+                animation-timeline: view(100% 12%);
+            }
+        }
+
+        @media (max-width: $mobile-width) {
+            height: 20vh;
+            top: -20vh;
+        }
+
+        @include keyframeDraw(drawSwirlLeft, $strokeOffset + 100);
+    }
+
+    :global .rainbow {
+        height: 135px;
+        top: -120px;
+        right: -5%;
+        fill: color.adjust($color-secondary, $saturation: -14%, $lightness: 19);
+        mix-blend-mode: darken;
+        
+    }
+
+    :global .sun {
+        height: 100px;
+        bottom: 190px;
+        left: -20%;
+        fill: color.adjust($color-tertiary, $lightness: 5);
+        mix-blend-mode: overlay;
+        
+    }
+
+    :global(.dark) & {
+        :global .rainbow, :global .sun {
+            mix-blend-mode: normal;
+        }
+        :global .rainbow {
+            fill: color.adjust($color-secondary, $lightness: 30);
+        }
+        :global .sun {
+            fill: color.adjust($color-tertiary, $lightness: 30);
+        }
+    }
+}
+
+.experiences {
     > div {
         position: relative;
 

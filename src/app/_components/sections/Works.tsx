@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from "framer-motion";
 import { WorkModal } from '@/_components';
+import { DoodleHeartSwirl, DoodleStar, DoodleSwirlArrowDown } from '@/_components/doodles';
 import { IconOpenFull } from '@/_components/icons';
 import { WorkProps } from '@/_utils/types';
 import { gtmEvent } from '@/_utils/gtm';
@@ -24,9 +25,16 @@ const Works: React.FC = () => {
     };
 
     return (
-        <>
+        <div className={styles['works-container']}>
+            <DoodleSwirlArrowDown/>
+            <span>
+                <DoodleHeartSwirl/>
+            </span>
+            <span>
+                <DoodleStar/>
+            </span>
             <h2>Works</h2>
-            <div className={styles.container}>
+            <div className={styles.works}>
                 <ul>
                     {works.map((work: Props, i: number) => {
                         return (
@@ -51,7 +59,7 @@ const Works: React.FC = () => {
                 </ul>
                 {selectedItem !== null && <WorkModal layoutId={`works-${selectedItem}`} {...works[selectedItem]} handleClose={handleClose} />}
             </div>
-        </>
+        </div>
     );
 };
 

@@ -9,5 +9,9 @@
         width: 14px;
         height: 14px;
         fill: var(--text-link);
+
+        :global(.dark) & {
+            fill: var(--text-link-accent);
+        }
     }
 }
