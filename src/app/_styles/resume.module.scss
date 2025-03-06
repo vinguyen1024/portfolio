@@ -273,7 +273,7 @@ $hide-icons: true;
         }
 
         section {
-            margin-top: 0.5em;
+            margin-top: 1em;
 
             &.experience {
                 width: 100%;
@@ -294,6 +294,7 @@ $hide-icons: true;
             }
 
             .description li {
+                margin: .65em 0;
                 padding-left: 14px;
 
                 &:before {
@@ -414,8 +415,6 @@ $hide-icons: true;
                         display: inline;
                     }
                 }
-
-
 
                 &.education h3 {
                     font-size: 9pt;
